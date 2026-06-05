@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1360">
+
+<title>Муншот — ELEMENT Craft Games</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===================================================== */
+/* БАЗА */
+/* ===================================================== */
+
+:root {
+    --accent: #c4d600; /* Тот самый неоновый лайм */
+    --bg: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --text-main: #ffffff;
+    --text-gray: #a0a0a0;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    overflow-x: hidden;
+
+    /* Глобальный масштаб 80% */
+    zoom: 0.8; 
+    -moz-transform: scale(0.8); 
+    -moz-transform-origin: top center;
+}
+
+/* Текстура шума на фоне */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ===================================================== */
+/* ОСНОВНАЯ КАРТОЧКА */
+/* ===================================================== */
+
+.page{
+    width:1400px;
+    min-height:750px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    position:relative;
+    overflow:hidden;
+    padding:60px;
+    z-index: 2;
+}
+
+/* ===================================================== */
+/* ЛОГО */
+/* ===================================================== */
+
+.logo{
+    position:absolute;
+    top: 50px;
+    right: 60px;
+    width: 240px;
+    filter: brightness(0) invert(1);
+    z-index:10;
+}
+
+/* ===================================================== */
+/* ЗАГОЛОВОК */
+/* ===================================================== */
+
+.title{
+    font-size: 72px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-main);
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:50px;
+    position:relative;
+    z-index:2;
+    letter-spacing: -1px;
+}
+
+.title::before{
+    content:'';
+    width: 10px;
+    height: 65px;
+    background: var(--accent);
+}
+
+/* ===================================================== */
+/* КОНТЕНТ */
+/* ===================================================== */
+
+.content{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items:start;
+    position:relative;
+    z-index:2;
+}
+
+/* ===================================================== */
+/* КАРТИНКА */
+/* ===================================================== */
+
+.image-box{
+    height: 550px;
+    border: 1px solid var(--border);
+    overflow:hidden;
+    background: var(--card-bg);
+    position:relative;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ===================================================== */
+/* ИНФО */
+/* ===================================================== */
+
+.info{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+}
+
+/* ===================================================== */
+/* ОПИСАНИЕ */
+/* ===================================================== */
+
+.desc{
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--text-gray);
+    border-left: 4px solid var(--accent);
+    padding-left: 25px;
+}
+
+/* ===================================================== */
+/* ФИШКИ */
+/* ===================================================== */
+
+.features{
+    display:grid;
+    gap:16px;
+}
+
+.feature{
+    background: var(--card-bg);
+    padding: 22px 30px;
+    border: 1px solid var(--border);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.feature:hover{
+    border-color: var(--accent);
+    background: #222;
+}
+
+/* ===================================================== */
+/* КНОПКА НАЗАД */
+/* ===================================================== */
+
+.back-btn{
+    margin-top: 15px;
+    height: 75px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+    background: var(--accent);
+    transition: 0.3s;
+}
+
+.back-btn:hover{
+    background: #fff;
+    transform: translateY(-5px);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ЛОГО -->
+    <img src="../img/logo.png" class="logo" alt="logo">
+
+    <!-- НАЗВАНИЕ -->
+    <div class="title">
+        Муншот
+    </div>
+
+    <!-- КОНТЕНТ -->
+    <div class="content">
+
+        <!-- КАРТИНКА -->
+        <div class="image-box">
+            <img src="../img/games/rails.jpg" alt="Муншот">
+        </div>
+
+        <!-- ИНФОРМАЦИЯ -->
+        <div class="info">
+
+            <!-- ОПИСАНИЕ -->
+            <div class="desc">
+                «Муншот» — это игра на точность и расчет силы. Используя специальное пусковое устройство, участникам нужно отправить шар по направляющим так, чтобы он точно попал в цель, преодолев все препятствия.
+            </div>
+
+            <!-- ПРЕИМУЩЕСТВА -->
+            <div class="features">
+                <div class="feature">
+                    Развивает глазомер и точность
+                </div>
+                <div class="feature">
+                    Динамичный формат соревнований
+                </div>
+                <div class="feature">
+                    Стильный деревянный дизайн
+                </div>
+                <div class="feature">
+                    Активное и веселое времяпрепровождение
+                </div>
+            </div>
+
+            <!-- КНОПКА НАЗАД -->
+            <a href="../index.html#games" class="back-btn">
+                Вернуться назад
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

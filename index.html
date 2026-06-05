@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1500">
+    <title>ELEMENT Craft Games | Премиальные игровые зоны</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #c4d600; /* Тот самый неоновый лайм */
+            --bg: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-gray: #a0a0a0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+
+            zoom: 0.8; /* Для современных браузеров (Chrome, Safari, Edge, Opera) */
+            -moz-transform: scale(0.8); /* Костыль для старых версий Firefox */
+            -moz-transform-origin: top center; /* Точка масштабирования для Firefox */
+        }
+
+        /* Текстура шума на фоне для брутальности */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Изменено: теперь это одна широкая колонка для текстового центра */
+        .hero-box {
+            width: 1400px;
+            display: block;
+            position: relative;
+        }
+
+        /* Логотип жестко позиционирован в правый верхний угол */
+        .logo {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 580px;
+            filter: brightness(0) invert(1);
+            z-index: 10;
+        }
+
+        /* Изменено: Растянули контент во всю ширину, увеличили отступы */
+        .hero-content {
+            margin-top: 100px;
+            max-width: 1200px;
+        }
+
+        /* Изменено: Сделали заголовок еще массивнее и агрессивнее */
+        .hero-title {
+            font-size: 120px;
+            font-weight: 900;
+            line-height: 0.99;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            letter-spacing: -3px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-text {
+            font-size: 24px;
+            color: var(--text-gray);
+            max-width: 750px;
+            margin-bottom: 60px;
+            border-left: 4px solid var(--accent);
+            padding-left: 30px;
+            line-height: 1.5;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 28px 60px;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #fff;
+            transform: translateY(-5px);
+        }
+
+        /* ================= SECTIONS ================= */
+        .section {
+            width: 1400px;
+            margin: 0 auto 120px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-size: 72px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* ================= GRID SYSTEM ================= */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 50px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            background: #222;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 16px;
+        }
+
+        /* ================= GAMES GRID ================= */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .game-item {
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            background: #000;
+        }
+
+        .game-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            opacity: 0.9;
+        }
+
+        .game-item:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .game-caption {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        /* ================= PRICE PACKAGES ================= */
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .pack-card {
+            background: #111;
+            padding: 40px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pack-card.active {
+            border: 2px solid var(--accent);
+        }
+
+        .pack-name {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .pack-list {
+            list-style: none;
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .pack-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .pack-price {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        /* ================= CONTACTS ================= */
+        .contact-footer {
+            background: var(--accent);
+            color: #000;
+            padding: 100px 60px;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 84px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-links a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 3px solid #000;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-box">
+            <img src="img/logo.png" class="logo" alt="ELEMENT LOGO">
+
+            <div class="hero-content">
+                <h1 class="hero-title">Игры,<br>которые <span>собирают людей</span></h1>
+                <p class="hero-text">
+                    Создаем интерактивные зоны для мероприятий любого масштаба. 
+                    Интеллектуальный азарт, тактильное удовольствие и живое общение без шаблонов и компромиссов.
+                </p>
+                <div class="hero-actions">
+                    <a href="#games" class="hero-btn">Смотреть каталог</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Профессиональный <span>подход</span></h2>
+        </div>
+        <div class="features-grid">
+            <div class="card">
+                <h3>Атмосфера</h3>
+                <p>Мы превращаем обычное пространство в точку притяжения, где гости начинают общаться без сценария.</p>
+            </div>
+            <div class="card">
+                <h3>Координация</h3>
+                <p>Наши мастера не просто стоят рядом — они вовлекают гостей, объясняют механику и поддерживают драйв.</p>
+            </div>
+            <div class="card">
+                <h3>Качество</h3>
+                <p>Используем только натуральные материалы: дерево, металл, кожу. Каждая игра — это арт-объект.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="games">
+        <div class="section-header">
+            <h2 class="section-title">Каталог <span>игр</span></h2>
+        </div>
+        <div class="games-grid">
+            <a href="games/jenga.html" class="game-item">
+                <img src="img/games/jenga.jpg" alt="Дженга">
+                <div class="game-caption">Дженга</div>
+            </a>
+            <a href="games/4inrow.html" class="game-item">
+                <img src="img/games/4inrow.jpg" alt="4 в ряд">
+                <div class="game-caption">4 в ряд</div>
+            </a>
+            <a href="games/nasharu.html" class="game-item">
+                <img src="img/games/nasharu.jpg" alt="Нашару">
+                <div class="game-caption">Нашару</div>
+            </a>
+            <a href="games/voshod.html" class="game-item">
+                <img src="img/games/voshod.jpg" alt="Восход">
+                <div class="game-caption">Восход</div>
+            </a>
+            <a href="games/magnetic.html" class="game-item">
+                <img src="img/games/magnetic.jpg" alt="Магнитное поле">
+                <div class="game-caption">Магнитное поле</div>
+            </a>
+            <a href="games/kalbutto.html" class="game-item">
+                <img src="img/games/kalbutto.jpg" alt="Кальбутто">
+                <div class="game-caption">Кальбутто</div>
+            </a>
+            <a href="games/kornhol.html" class="game-item">
+                <img src="img/games/kornhol.jpg" alt="Корнхолл">
+                <div class="game-caption">Корнхолл</div>
+            </a>
+            <a href="games/koromyslo.html" class="game-item">
+                <img src="img/games/koromyslo.jpg" alt="Коромысло">
+                <div class="game-caption">Коромысло</div>
+            </a>
+            <a href="games/zigzag.html" class="game-item">
+                <img src="img/games/zigzag.jpg" alt="Зигзаг">
+                <div class="game-caption">Зигзаг</div>
+            </a>
+            <a href="games/sea-battle.html" class="game-item">
+                <img src="img/games/sea-battle.jpg" alt="Морской бой">
+                <div class="game-caption">Морской бой</div>
+            </a>
+            <a href="games/elastik.html" class="game-item">
+                <img src="img/games/elastik.jpg" alt="Эластик">
+                <div class="game-caption">Эластик</div>
+            </a>
+            <a href="games/rails.html" class="game-item">
+                <img src="img/games/rails.jpg" alt="Рельсы">
+                <div class="game-caption">Рельсы</div>
+            </a>
+            <a href="games/ringos.html" class="game-item">
+                <img src="img/games/ringos.jpg" alt="Рингос">
+                <div class="game-caption">Рингос</div>
+            </a>
+            <a href="games/tokatron.html" class="game-item">
+                <img src="img/games/tokatron.jpg" alt="Токатронь">
+                <div class="game-caption">Токатронь</div>
+            </a>
+        </div>
+    </section>
+
+<!-- ПАКЕТЫ -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Форматы <span>участия</span></h2>
+        </div>
+        
+        <div class="packages" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 40px;">
+            <!-- LIGHT -->
+            <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
+                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 20px;">LIGHT</div>
+                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">3 игры на выбор</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">Полный комплект оборудования</li>
+                </ul>
+                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">2 часа</span>
+                        <span class="price-value" style="font-size: 22px; font-weight: 900; color: var(--accent);">40 000 ₸</span>
+                    </div>
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">5 часов</span>
+                        <span class="price-value" style="font-size: 22px; font-weight: 900; color: var(--accent);">65 000 ₸</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STANDARD -->
+            <div class="pack-card active" style="background: #111; padding: 40px; border: 2px solid var(--accent); display: flex; flex-direction: column;">
+                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 20px;">STANDARD</div>
+                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">6 игр на выбор</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">Оптимально для большинства событий</li>
+                </ul>
+                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">2 часа</span>
+                        <span class="price-value" style="font-size: 22px; font-weight: 900; color: #fff;">75 000 ₸</span>
+                    </div>
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">5 часов</span>
+                        <span class="price-value" style="font-size: 22px; font-weight: 900; color: #fff;">110 000 ₸</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MAXIMUM -->
+            <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
+                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 20px;">MAXIMUM</div>
+                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">10 игр в зоне</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">Максимальное вовлечение гостей</li>
+                </ul>
+                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">2 часа</span>
+                        <span class="price-value" style="font-size: 22px; font-weight: 900; color: var(--accent);">140 000 ₸</span>
+                    </div>
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">5 часов</span>
+                        <span class="price-value" style="font-size: 22px; font-weight: 900; color: var(--accent);">190 000 ₸</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CUSTOM -->
+            <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
+                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 20px;">CUSTOM</div>
+                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">Индивидуальный набор</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 14px;">Брендирование игровых зон</li>
+                </ul>
+                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
+                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price-time" style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;">Любое время</span>
+                        <span class="price-custom-val" style="font-size: 22px; font-weight: 900; color: var(--accent); text-transform: uppercase;">По запросу</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Подпись под ценами -->
+        <div class="packages-note" style="font-size: 16px; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid var(--accent); padding-left: 15px; margin-top: 30px; font-weight: 700;">
+            В стоимость каждого пакета включены: доставка, монтаж, демонтаж и работа профессиональных координаторов.
+        </div>
+    </section>
+
+    <footer class="contact-footer" id="contact">
+        <h2 class="footer-title">Готовы начать?</h2>
+        <div class="footer-links">
+            <a href="tel:+77028966596">+7 (702) 896 65 96</a>
+            <a href="https://wa.me/77028966596?text=Здравствуйте!%20Хочу%20оформить%20заказ.">WhatsApp</a>
+            <a href="https://www.instagram.com/event_element/">Instagram</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
