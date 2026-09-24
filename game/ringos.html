@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>На крючке — ELEMENT Craft Games</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #c4d600;
+      --bg: #0d0d0d;
+      --card-bg: #1a1a1a;
+      --text-main: #fff;
+      --text-gray: #a0a0a0;
+      --border: rgba(255,255,255,.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      overflow-x: hidden;
+      zoom: .8;
+      -moz-transform: scale(.8);
+      -moz-transform-origin: top center;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+      opacity: .05;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .page {
+      width: 1400px;
+      min-height: 750px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      padding: 60px;
+      z-index: 2;
+    }
+
+    .logo {
+      position: absolute;
+      top: 50px;
+      right: 60px;
+      width: 240px;
+      filter: brightness(0) invert(1);
+      z-index: 10;
+    }
+
+    .title {
+      font-size: 72px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: -1px;
+    }
+
+    .title::before {
+      content: '';
+      width: 10px;
+      height: 65px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .image-box {
+      height: 550px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--card-bg);
+      position: relative;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    .desc {
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--text-gray);
+      border-left: 4px solid var(--accent);
+      padding-left: 25px;
+    }
+
+    .features {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature {
+      background: var(--card-bg);
+      padding: 22px 30px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: .3s;
+    }
+
+    .feature:hover {
+      border-color: var(--accent);
+      background: #222;
+    }
+
+    .back-btn {
+      margin-top: 15px;
+      height: 75px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #000;
+      background: var(--accent);
+      transition: .3s;
+    }
+
+    .back-btn:hover {
+      background: #fff;
+      transform: translateY(-5px);
+    }
+
+    .language-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      backdrop-filter: blur(12px);
+    }
+
+    .language-modal {
+      width: 520px;
+      padding: 50px;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,.15);
+      text-align: center;
+      box-shadow: 0 30px 100px rgba(0,0,0,.7);
+    }
+
+    .language-modal h2 {
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .language-modal p {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    .language-buttons {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+
+    .language-button {
+      height: 60px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #202020;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .language-button:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .language-switcher {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      display: flex;
+      gap: 5px;
+      z-index: 10000;
+    }
+
+    .language-switcher button {
+      width: 42px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: #151515;
+      color: #777;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .language-switcher button:hover,
+    .language-switcher button.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        zoom: 1;
+        -moz-transform: none;
+        padding: 20px;
+      }
+
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 35px 25px;
+      }
+
+      .logo {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 180px;
+        margin: 0 0 30px auto;
+        display: block;
+      }
+
+      .title {
+        font-size: 42px;
+        margin-bottom: 35px;
+      }
+
+      .title::before {
+        width: 7px;
+        height: 42px;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .image-box {
+        height: 400px;
+      }
+
+      .desc {
+        font-size: 16px;
+      }
+
+      .language-modal {
+        width: calc(100% - 40px);
+        padding: 35px 25px;
+      }
+
+      .language-modal h2 {
+        font-size: 25px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="language-overlay" id="languageOverlay">
+    <div class="language-modal">
+      <h2 data-i18n="languageTitle">Выберите язык</h2>
+      <p data-i18n="languageSubtitle">Выберите язык для просмотра сайта</p>
+
+```
+  <div class="language-buttons">
+    <button class="language-button" data-language="ru">RU</button>
+    <button class="language-button" data-language="kk">KZ</button>
+    <button class="language-button" data-language="en">EN</button>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="language-switcher">
+    <button data-language="ru">RU</button>
+    <button data-language="kk">KZ</button>
+    <button data-language="en">EN</button>
+  </div>
+
+  <div class="page">
+
+```
+<img
+  class="logo"
+  src="../img/logo.png"
+  alt="ELEMENT Craft Games"
+  data-i18n-alt="logoAlt"
+>
+
+<h1 class="title" data-i18n="title">На крючке</h1>
+
+<div class="content">
+
+  <div class="image-box">
+    <img
+      src="../img/games/ringos.jpg"
+      alt="На крючке"
+      data-i18n-alt="imageAlt"
+    >
+  </div>
+
+  <div class="info">
+
+    <div class="desc" data-i18n="description">
+      «На крючке» — это классическая игра на меткость, где главная задача участников — набросить кольца на вертикальные штыри. Простая, но невероятно азартная игра, которая отлично подходит для любого мероприятия.
+    </div>
+
+    <div class="features">
+      <div class="feature" data-i18n="feature1">
+        Развивает точность и концентрацию
+      </div>
+
+      <div class="feature" data-i18n="feature2">
+        Понятный формат для взрослых и детей
+      </div>
+
+      <div class="feature" data-i18n="feature3">
+        Универсальность и простота правил
+      </div>
+
+      <div class="feature" data-i18n="feature4">
+        Активный отдых на свежем воздухе или в помещении
+      </div>
+    </div>
+
+    <a href="../index.html" class="back-btn" data-i18n="back">
+      Вернуться назад
+    </a>
+
+  </div>
+</div>
+```
+
+  </div>
+
+  <script>
+    const ELEMENT_LANGUAGE_KEY = 'element_language';
+
+    const translations = {
+      ru: {
+        pageTitle: 'На крючке — ELEMENT Craft Games',
+        title: 'На крючке',
+        description: '«На крючке» — это классическая игра на меткость, где главная задача участников — набросить кольца на вертикальные штыри. Простая, но невероятно азартная игра, которая отлично подходит для любого мероприятия.',
+        feature1: 'Развивает точность и концентрацию',
+        feature2: 'Понятный формат для взрослых и детей',
+        feature3: 'Универсальность и простота правил',
+        feature4: 'Активный отдых на свежем воздухе или в помещении',
+        back: 'Вернуться назад',
+        logoAlt: 'ELEMENT Craft Games',
+        imageAlt: 'На крючке',
+        languageTitle: 'Выберите язык',
+        languageSubtitle: 'Выберите язык для просмотра сайта'
+      },
+
+      kk: {
+        pageTitle: 'Ілмекте — ELEMENT Craft Games',
+        title: 'Ілмекте',
+        description: '«Рингос» — дәлдікке арналған классикалық ойын. Қатысушылардың негізгі мақсаты — сақиналарды тік орналасқан таяқшаларға дәл лақтыру. Ережесі қарапайым, бірақ өте қызықты бұл ойын кез келген іс-шараға тамаша сәйкес келеді.',
+        feature1: 'Дәлдік пен зейінді дамытады',
+        feature2: 'Ересектер мен балаларға түсінікті формат',
+        feature3: 'Әмбебап әрі қарапайым ережелер',
+        feature4: 'Ашық ауада немесе ғимарат ішінде белсенді демалыс',
+        back: 'Артқа қайту',
+        logoAlt: 'ELEMENT Craft Games',
+        imageAlt: 'Ілмекте',
+        languageTitle: 'Тілді таңдаңыз',
+        languageSubtitle: 'Сайтты көру үшін тілді таңдаңыз'
+      },
+
+      en: {
+        pageTitle: 'On the hook — ELEMENT Craft Games',
+        title: 'On the hook',
+        description: 'On the hook is a classic accuracy game where the main goal is to throw rings onto vertical pegs. Simple yet incredibly exciting, it is a great fit for any event.',
+        feature1: 'Develops accuracy and concentration',
+        feature2: 'An easy-to-understand format for adults and children',
+        feature3: 'Universal format with simple rules',
+        feature4: 'Active entertainment indoors or outdoors',
+        back: 'Go back',
+        logoAlt: 'ELEMENT Craft Games',
+        imageAlt: 'On the hook',
+        languageTitle: 'Choose your language',
+        languageSubtitle: 'Choose a language to view the website'
+      }
+    };
+
+    function getCurrentLanguage() {
+      const savedLanguage = localStorage.getItem(ELEMENT_LANGUAGE_KEY);
+
+      if (savedLanguage && translations[savedLanguage]) {
+        return savedLanguage;
+      }
+
+      return null;
+    }
+
+    function applyLanguage(language) {
+      if (!translations[language]) {
+        return;
+      }
+
+      const translation = translations[language];
+
+      document.documentElement.lang = language === 'kk' ? 'kk' : language;
+
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+
+        if (translation[key] !== undefined) {
+          element.textContent = translation[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+        const key = element.getAttribute('data-i18n-alt');
+
+        if (translation[key] !== undefined) {
+          element.alt = translation[key];
+        }
+      });
+
+      if (translation.pageTitle) {
+        document.title = translation.pageTitle;
+      }
+
+      document.querySelectorAll('.language-switcher button').forEach(button => {
+        button.classList.toggle(
+          'active',
+          button.dataset.language === language
+        );
+      });
+    }
+
+    function setLanguage(language) {
+      if (!translations[language]) {
+        return;
+      }
+
+      localStorage.setItem(ELEMENT_LANGUAGE_KEY, language);
+
+      applyLanguage(language);
+
+      const overlay = document.getElementById('languageOverlay');
+
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLanguage = getCurrentLanguage();
+      const overlay = document.getElementById('languageOverlay');
+
+      document.querySelectorAll('[data-language]').forEach(button => {
+        button.addEventListener('click', () => {
+          setLanguage(button.dataset.language);
+        });
+      });
+
+      if (savedLanguage) {
+        applyLanguage(savedLanguage);
+
+        if (overlay) {
+          overlay.style.display = 'none';
+        }
+      } else {
+        if (overlay) {
+          overlay.style.display = 'flex';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
