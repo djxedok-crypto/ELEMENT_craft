@@ -1,15 +1,19 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1360">
 
-<title>4 В Ряд — ELEMENT Craft Games</title>
+<title data-i18n="pageTitle">4 В Ряд — ELEMENT Craft Games</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
 
 <style>
 
@@ -18,7 +22,7 @@
 /* ===================================================== */
 
 :root {
-    --accent: #c4d600; /* Тот самый неоновый лайм */
+    --accent: #c4d600;
     --bg: #0d0d0d;
     --card-bg: #1a1a1a;
     --text-main: #ffffff;
@@ -26,248 +30,501 @@
     --border: rgba(255, 255, 255, 0.1);
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:'Montserrat',sans-serif;
+body {
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--bg);
     color: var(--text-main);
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
     overflow-x: hidden;
 
-    /* Глобальный масштаб 80% */
-    zoom: 0.8; 
-    -moz-transform: scale(0.8); 
+    zoom: 0.8;
+
+    -moz-transform: scale(0.8);
     -moz-transform-origin: top center;
 }
 
-/* Текстура шума на фоне */
+
+/* ===================================================== */
+/* ТЕКСТУРА */
+/* ===================================================== */
+
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
     background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+
     opacity: 0.05;
     pointer-events: none;
     z-index: 1;
 }
 
+
 /* ===================================================== */
 /* ОСНОВНАЯ КАРТОЧКА */
 /* ===================================================== */
 
-.page{
-    width:1400px;
-    min-height:750px;
+.page {
+    width: 1400px;
+    min-height: 750px;
+
     background: var(--bg);
+
     border: 1px solid var(--border);
-    position:relative;
-    overflow:hidden;
-    padding:60px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 60px;
+
     z-index: 2;
 }
+
 
 /* ===================================================== */
 /* ЛОГО */
 /* ===================================================== */
 
-.logo{
-    position:absolute;
+.logo {
+    position: absolute;
+
     top: 50px;
     right: 60px;
+
     width: 240px;
+
     filter: brightness(0) invert(1);
-    z-index:10;
+
+    z-index: 10;
 }
+
+
+/* ===================================================== */
+/* ЯЗЫК */
+/* ===================================================== */
+
+.language-switcher {
+    position: absolute;
+
+    top: 30px;
+    left: 30px;
+
+    display: flex;
+    gap: 5px;
+
+    background: rgba(17, 17, 17, 0.94);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    padding: 5px;
+
+    backdrop-filter: blur(10px);
+
+    z-index: 100;
+}
+
+.lang-btn {
+    border: 0;
+
+    background: transparent;
+
+    color: #aaa;
+
+    padding: 9px 12px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+    background: var(--accent);
+
+    color: #000;
+}
+
 
 /* ===================================================== */
 /* ЗАГОЛОВОК */
 /* ===================================================== */
 
-.title{
+.title {
     font-size: 72px;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     color: var(--text-main);
-    display:flex;
-    align-items:center;
-    gap:25px;
-    margin-bottom:50px;
-    position:relative;
-    z-index:2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 50px;
+
+    position: relative;
+
+    z-index: 2;
+
     letter-spacing: -1px;
+
+    padding-top: 20px;
 }
 
-.title::before{
-    content:'';
+.title::before {
+    content: '';
+
     width: 10px;
+
     height: 65px;
+
     background: var(--accent);
+
+    flex-shrink: 0;
 }
+
 
 /* ===================================================== */
 /* КОНТЕНТ */
 /* ===================================================== */
 
-.content{
-    display:grid;
+.content {
+    display: grid;
+
     grid-template-columns: 1.1fr 0.9fr;
+
     gap: 60px;
-    align-items:start;
-    position:relative;
-    z-index:2;
+
+    align-items: start;
+
+    position: relative;
+
+    z-index: 2;
 }
+
 
 /* ===================================================== */
 /* КАРТИНКА */
 /* ===================================================== */
 
-.image-box{
+.image-box {
     height: 550px;
+
     border: 1px solid var(--border);
-    overflow:hidden;
+
+    overflow: hidden;
+
     background: var(--card-bg);
-    position:relative;
+
+    position: relative;
 }
 
-.image-box img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.image-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
 }
+
 
 /* ===================================================== */
-/* ИНФО */
+/* ИНФОРМАЦИЯ */
 /* ===================================================== */
 
-.info{
-    display:flex;
-    flex-direction:column;
-    gap:35px;
+.info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
 }
+
 
 /* ===================================================== */
 /* ОПИСАНИЕ */
 /* ===================================================== */
 
-.desc{
+.desc {
     font-size: 20px;
+
     line-height: 1.7;
+
     color: var(--text-gray);
+
     border-left: 4px solid var(--accent);
+
     padding-left: 25px;
 }
+
 
 /* ===================================================== */
 /* ФИШКИ */
 /* ===================================================== */
 
-.features{
-    display:grid;
-    gap:16px;
+.features {
+    display: grid;
+
+    gap: 16px;
 }
 
-.feature{
+.feature {
     background: var(--card-bg);
+
     padding: 22px 30px;
+
     border: 1px solid var(--border);
+
     font-weight: 700;
+
     font-size: 16px;
+
     color: var(--text-main);
+
     text-transform: uppercase;
+
     letter-spacing: 0.5px;
+
     transition: 0.3s;
 }
 
-.feature:hover{
+.feature:hover {
     border-color: var(--accent);
+
     background: #222;
 }
+
 
 /* ===================================================== */
 /* КНОПКА НАЗАД */
 /* ===================================================== */
 
-.back-btn{
+.back-btn {
     margin-top: 15px;
+
     height: 75px;
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     text-decoration: none;
+
     font-size: 18px;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     letter-spacing: 1px;
+
     color: #000;
+
     background: var(--accent);
+
     transition: 0.3s;
 }
 
-.back-btn:hover{
+.back-btn:hover {
     background: #fff;
+
     transform: translateY(-5px);
 }
 
+
+/* ===================================================== */
+/* ОКНО ВЫБОРА ЯЗЫКА */
+/* ===================================================== */
+
+#languageOverlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.94);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 99999;
+
+    backdrop-filter: blur(12px);
+}
+
+#languageOverlay.hidden {
+    display: none;
+}
+
+.language-modal {
+    width: min(700px, calc(100vw - 40px));
+
+    padding: 60px 50px;
+
+    background: #111;
+
+    border: 2px solid var(--accent);
+
+    text-align: center;
+
+    box-shadow: 0 0 60px rgba(196, 214, 0, 0.15);
+}
+
+.language-modal h2 {
+    font-size: 42px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.language-modal p {
+    color: #aaa;
+
+    font-size: 20px;
+
+    margin-bottom: 35px;
+}
+
+.language-buttons {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.language-button {
+    border: 1px solid #333;
+
+    background: #1a1a1a;
+
+    color: #fff;
+
+    padding: 22px 15px;
+
+    font-family: inherit;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.language-button:hover {
+    background: var(--accent);
+
+    color: #000;
+
+    border-color: var(--accent);
+
+    transform: translateY(-3px);
+}
+
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
+@media (max-width: 700px) {
+
+    .language-modal {
+        padding: 40px 25px;
+    }
+
+    .language-modal h2 {
+        font-size: 30px;
+    }
+
+    .language-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .language-switcher {
+        top: 10px;
+        left: 10px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="page">
 
-    <!-- ЛОГО -->
-    <img src="../img/logo.png" class="logo" alt="logo">
+<!-- ===================================================== -->
+<!-- ОКНО ВЫБОРА ЯЗЫКА -->
+<!-- ===================================================== -->
 
-    <!-- НАЗВАНИЕ -->
-    <div class="title">
-        4 В Ряд
-    </div>
+<div id="languageOverlay">
 
-    <!-- КОНТЕНТ -->
-    <div class="content">
+    <div class="language-modal">
 
-        <!-- КАРТИНКА -->
-        <div class="image-box">
-            <img src="../img/games/4inrow.jpg" alt="4 В Ряд">
-        </div>
+        <h2 id="languageModalTitle">
+            Выберите язык
+        </h2>
 
-        <!-- ИНФОРМАЦИЯ -->
-        <div class="info">
+        <p id="languageModalSubtitle">
+            Выберите язык для просмотра сайта
+        </p>
 
-            <!-- ОПИСАНИЕ -->
-            <div class="desc">
-                «4 В Ряд» — это завораживающяя деревянная версия знаменитой стратегической игры. Игроки по очереди опускают круглые фишки своего цвета в вертикальные прорези, стремясь быстрее оппонента собрать непрерывную линию из четырех шашек по горизонтали, вертикали или диагонали.
-            </div>
+        <div class="language-buttons">
 
-            <!-- ПРЕИМУЩЕСТВА -->
-            <div class="features">
-                <div class="feature">
-                    Прокачивает стратегическое мышление и тактическую гибкость
-                </div>
-                <div class="feature">
-                    Учит просчитывать ходы соперника на несколько шагов вперед
-                </div>
-                <div class="feature">
-                    Идеальный формат для быстрых интеллектуальных дуэлей
-                </div>
-                <div class="feature">
-                    Стильное исполнение из премиального дерева украсит любую зону активности
-                </div>
-            </div>
+            <button
+                class="language-button"
+                data-language="ru">
+                🇷🇺 Русский
+            </button>
 
-            <!-- КНОПКА НАЗАД -->
-            <a href="../index.html#games" class="back-btn">
-                Вернуться назад
-            </a>
+            <button
+                class="language-button"
+                data-language="kk">
+                🇰🇿 Қазақша
+            </button>
+
+            <button
+                class="language-button"
+                data-language="en">
+                🇬🇧 English
+            </button>
 
         </div>
 
@@ -275,5 +532,625 @@ body::before {
 
 </div>
 
+
+<!-- ===================================================== -->
+<!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+<!-- ===================================================== -->
+
+<div class="language-switcher">
+
+    <button
+        class="lang-btn"
+        data-language="ru">
+        RU
+    </button>
+
+    <button
+        class="lang-btn"
+        data-language="kk">
+        KZ
+    </button>
+
+    <button
+        class="lang-btn"
+        data-language="en">
+        EN
+    </button>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- ОСНОВНАЯ СТРАНИЦА -->
+<!-- ===================================================== -->
+
+<div class="page">
+
+
+    <!-- ЛОГО -->
+
+    <img
+        src="../img/logo.png"
+        class="logo"
+        alt="ELEMENT LOGO">
+
+
+    <!-- ================================================= -->
+    <!-- НАЗВАНИЕ -->
+    <!-- ================================================= -->
+
+    <div class="title">
+
+        <span data-i18n="gameTitle">
+            4 В Ряд
+        </span>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- КОНТЕНТ -->
+    <!-- ================================================= -->
+
+    <div class="content">
+
+
+        <!-- ============================================= -->
+        <!-- КАРТИНКА -->
+        <!-- ============================================= -->
+
+        <div class="image-box">
+
+            <img
+                src="../img/games/4inrow.jpg"
+                data-i18n-alt="gameTitle"
+                alt="4 В Ряд">
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- ИНФОРМАЦИЯ -->
+        <!-- ============================================= -->
+
+        <div class="info">
+
+
+            <!-- ========================================= -->
+            <!-- ОПИСАНИЕ -->
+            <!-- ========================================= -->
+
+            <div
+                class="desc"
+                data-i18n="description">
+
+                «4 В Ряд» — это завораживающая деревянная
+                версия знаменитой стратегической игры.
+                Игроки по очереди опускают круглые фишки
+                своего цвета в вертикальные прорези,
+                стремясь быстрее оппонента собрать
+                непрерывную линию из четырех шашек
+                по горизонтали, вертикали или диагонали.
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- ПРЕИМУЩЕСТВА -->
+            <!-- ========================================= -->
+
+            <div class="features">
+
+
+                <div
+                    class="feature"
+                    data-i18n="feature1">
+
+                    Прокачивает стратегическое мышление
+                    и тактическую гибкость
+
+                </div>
+
+
+                <div
+                    class="feature"
+                    data-i18n="feature2">
+
+                    Учит просчитывать ходы соперника
+                    на несколько шагов вперед
+
+                </div>
+
+
+                <div
+                    class="feature"
+                    data-i18n="feature3">
+
+                    Идеальный формат для быстрых
+                    интеллектуальных дуэлей
+
+                </div>
+
+
+                <div
+                    class="feature"
+                    data-i18n="feature4">
+
+                    Стильное исполнение из премиального
+                    дерева украсит любую зону активности
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- КНОПКА НАЗАД -->
+            <!-- ========================================= -->
+
+            <a
+                href="../index.html#games"
+                class="back-btn"
+                data-i18n="backButton">
+
+                Вернуться назад
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- MULTILINGUAL SYSTEM -->
+<!-- ===================================================== -->
+
+<script>
+
+
+/*
+===========================================================
+ELEMENT Craft Games
+MULTILINGUAL SYSTEM
+
+ВАЖНО:
+
+Этот ключ должен совпадать с ключом на index.html:
+
+element_language
+
+Благодаря этому язык запоминается на устройстве.
+
+Например:
+
+Главная → KZ
+
+↓
+4 В Ряд
+
+↓
+страница сразу открывается на KZ
+
+Если изменить на EN здесь,
+главная тоже будет EN при следующем открытии.
+===========================================================
+*/
+
+
+const ELEMENT_LANGUAGE_KEY = 'element_language';
+
+
+/* ===================================================== */
+/* ПЕРЕВОДЫ */
+/* ===================================================== */
+
+const translations = {
+
+
+    /* ================================================= */
+    /* РУССКИЙ */
+    /* ================================================= */
+
+    ru: {
+
+        pageTitle:
+            '4 В Ряд — ELEMENT Craft Games',
+
+        gameTitle:
+            '4 В Ряд',
+
+        description:
+            '«4 В Ряд» — это завораживающая деревянная версия знаменитой стратегической игры. Игроки по очереди опускают круглые фишки своего цвета в вертикальные прорези, стремясь быстрее оппонента собрать непрерывную линию из четырех шашек по горизонтали, вертикали или диагонали.',
+
+        feature1:
+            'Прокачивает стратегическое мышление и тактическую гибкость',
+
+        feature2:
+            'Учит просчитывать ходы соперника на несколько шагов вперед',
+
+        feature3:
+            'Идеальный формат для быстрых интеллектуальных дуэлей',
+
+        feature4:
+            'Стильное исполнение из премиального дерева украсит любую зону активности',
+
+        backButton:
+            'Вернуться назад',
+
+        languageTitle:
+            'Выберите язык',
+
+        languageSubtitle:
+            'Выберите язык для просмотра сайта'
+
+    },
+
+
+    /* ================================================= */
+    /* КАЗАХСКИЙ */
+    /* ================================================= */
+
+    kk: {
+
+        pageTitle:
+            '4 қатарынан — ELEMENT Craft Games',
+
+        gameTitle:
+            '4 қатарынан',
+
+        description:
+            '«4 қатарынан» — әйгілі стратегиялық ойынның ағаштан жасалған әсерлі нұсқасы. Ойыншылар кезекпен өз түсіндегі дөңгелек фишкаларды тік ойықтарға орналастырады. Мақсат — қарсыластан бұрын көлденең, тік немесе диагональ бойынша төрт фишканы қатарынан орналастыру.',
+
+        feature1:
+            'Стратегиялық ойлау мен тактикалық икемділікті дамытады',
+
+        feature2:
+            'Қарсыластың бірнеше жүрісін алдын ала есептеуге үйретеді',
+
+        feature3:
+            'Жылдам интеллектуалды дуэльдер үшін тамаша формат',
+
+        feature4:
+            'Премиум ағаштан жасалған стильді дизайн кез келген ойын аймағын безендіреді',
+
+        backButton:
+            'Артқа қайту',
+
+        languageTitle:
+            'Тілді таңдаңыз',
+
+        languageSubtitle:
+            'Сайтты көру үшін тілді таңдаңыз'
+
+    },
+
+
+    /* ================================================= */
+    /* ENGLISH */
+    /* ================================================= */
+
+    en: {
+
+        pageTitle:
+            'Four in a Row — ELEMENT Craft Games',
+
+        gameTitle:
+            'Four in a Row',
+
+        description:
+            'Four in a Row is an impressive wooden version of the famous strategy game. Players take turns dropping round pieces of their color into the vertical slots, trying to be the first to create an uninterrupted line of four pieces horizontally, vertically or diagonally.',
+
+        feature1:
+            'Develops strategic thinking and tactical flexibility',
+
+        feature2:
+            'Teaches players to anticipate their opponent’s moves several steps ahead',
+
+        feature3:
+            'A perfect format for fast-paced intellectual duels',
+
+        feature4:
+            'Premium wooden construction adds a stylish touch to any activity zone',
+
+        backButton:
+            'Go back',
+
+        languageTitle:
+            'Choose your language',
+
+        languageSubtitle:
+            'Choose a language to view the website'
+
+    }
+
+};
+
+
+/* ===================================================== */
+/* ПОЛУЧИТЬ СОХРАНЕННЫЙ ЯЗЫК */
+/* ===================================================== */
+
+function getCurrentLanguage() {
+
+    const savedLanguage =
+        localStorage.getItem(ELEMENT_LANGUAGE_KEY);
+
+    if (
+        savedLanguage &&
+        translations[savedLanguage]
+    ) {
+        return savedLanguage;
+    }
+
+    return null;
+}
+
+
+/* ===================================================== */
+/* ПРИМЕНИТЬ ЯЗЫК */
+/* ===================================================== */
+
+function applyLanguage(language) {
+
+    const dictionary =
+        translations[language] || translations.ru;
+
+
+    /* HTML LANG */
+
+    document.documentElement.lang =
+        language === 'kk'
+            ? 'kk'
+            : language;
+
+
+    /* TITLE */
+
+    const pageTitle =
+        document.querySelector(
+            'title[data-i18n="pageTitle"]'
+        );
+
+    if (pageTitle) {
+
+        pageTitle.textContent =
+            dictionary.pageTitle;
+
+    }
+
+
+    /* ВСЕ ТЕКСТЫ */
+
+    document.querySelectorAll(
+        '[data-i18n]'
+    ).forEach(element => {
+
+        const key =
+            element.dataset.i18n;
+
+        if (
+            dictionary[key] !== undefined
+        ) {
+
+            element.textContent =
+                dictionary[key];
+
+        }
+
+    });
+
+
+    /* ALT У КАРТИНКИ */
+
+    document.querySelectorAll(
+        '[data-i18n-alt]'
+    ).forEach(element => {
+
+        const key =
+            element.dataset.i18nAlt;
+
+        if (
+            dictionary[key] !== undefined
+        ) {
+
+            element.alt =
+                dictionary[key];
+
+        }
+
+    });
+
+
+    /* LANGUAGE MODAL */
+
+    const modalTitle =
+        document.getElementById(
+            'languageModalTitle'
+        );
+
+    const modalSubtitle =
+        document.getElementById(
+            'languageModalSubtitle'
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            dictionary.languageTitle;
+
+    }
+
+
+    if (modalSubtitle) {
+
+        modalSubtitle.textContent =
+            dictionary.languageSubtitle;
+
+    }
+
+
+    /* LANGUAGE BUTTONS */
+
+    document.querySelectorAll(
+        '.lang-btn'
+    ).forEach(button => {
+
+        button.classList.toggle(
+            'active',
+            button.dataset.language === language
+        );
+
+    });
+
+}
+
+
+/* ===================================================== */
+/* УСТАНОВИТЬ ЯЗЫК */
+/* ===================================================== */
+
+function setLanguage(language) {
+
+    if (!translations[language]) {
+        return;
+    }
+
+
+    /*
+     * Сохраняем язык в памяти устройства.
+     *
+     * localStorage работает между страницами
+     * и сохраняется после закрытия браузера.
+     */
+
+    localStorage.setItem(
+        ELEMENT_LANGUAGE_KEY,
+        language
+    );
+
+
+    applyLanguage(language);
+
+
+    /* Закрываем окно */
+
+    const overlay =
+        document.getElementById(
+            'languageOverlay'
+        );
+
+    if (overlay) {
+
+        overlay.classList.add('hidden');
+
+    }
+
+}
+
+
+/* ===================================================== */
+/* ЗАПУСК */
+/* ===================================================== */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+
+
+        /* ============================================= */
+        /* КНОПКИ ВЫБОРА ЯЗЫКА */
+        /* ============================================= */
+
+        document.querySelectorAll(
+            '[data-language]'
+        ).forEach(button => {
+
+            button.addEventListener(
+                'click',
+                function () {
+
+                    setLanguage(
+                        this.dataset.language
+                    );
+
+                }
+            );
+
+        });
+
+
+        /* ============================================= */
+        /* ПРОВЕРЯЕМ ПАМЯТЬ УСТРОЙСТВА */
+        /* ============================================= */
+
+        const savedLanguage =
+            getCurrentLanguage();
+
+
+        /*
+         * Если язык уже выбран:
+         *
+         * сразу применяем его
+         * и НЕ показываем окно.
+         */
+
+        if (savedLanguage) {
+
+            applyLanguage(
+                savedLanguage
+            );
+
+
+            const overlay =
+                document.getElementById(
+                    'languageOverlay'
+                );
+
+            if (overlay) {
+
+                overlay.classList.add(
+                    'hidden'
+                );
+
+            }
+
+        }
+
+        /*
+         * Если язык еще никогда не выбирали:
+         *
+         * показываем окно.
+         */
+
+        else {
+
+            const overlay =
+                document.getElementById(
+                    'languageOverlay'
+                );
+
+            if (overlay) {
+
+                overlay.classList.remove(
+                    'hidden'
+                );
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+
 </body>
 </html>
+```
