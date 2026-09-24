@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
 
@@ -18,7 +19,7 @@
 /* ===================================================== */
 
 :root {
-    --accent: #c4d600; /* Тот самый неоновый лайм */
+    --accent: #c4d600;
     --bg: #0d0d0d;
     --card-bg: #1a1a1a;
     --text-main: #ffffff;
@@ -43,9 +44,8 @@ body{
     padding:40px;
     overflow-x: hidden;
 
-    /* Глобальный масштаб 80% */
-    zoom: 0.8; 
-    -moz-transform: scale(0.8); 
+    zoom: 0.8;
+    -moz-transform: scale(0.8);
     -moz-transform-origin: top center;
 }
 
@@ -53,7 +53,10 @@ body{
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
     opacity: 0.05;
     pointer-events: none;
@@ -217,63 +220,379 @@ body::before {
     transform: translateY(-5px);
 }
 
+/* ===================================================== */
+/* ЯЗЫК */
+/* ===================================================== */
+
+.language-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    backdrop-filter:blur(12px);
+}
+
+.language-modal{
+    width:520px;
+    padding:50px;
+    background:#151515;
+    border:1px solid rgba(255,255,255,.15);
+    text-align:center;
+    box-shadow:0 30px 100px rgba(0,0,0,.7);
+}
+
+.language-modal h2{
+    font-size:32px;
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.language-modal p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:35px;
+}
+
+.language-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.language-button{
+    height:60px;
+    border:1px solid rgba(255,255,255,.15);
+    background:#202020;
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.language-button:hover{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+.language-switcher{
+    position:fixed;
+    top:25px;
+    left:25px;
+    display:flex;
+    gap:5px;
+    z-index:10000;
+}
+
+.language-switcher button{
+    width:42px;
+    height:34px;
+    border:1px solid rgba(255,255,255,.2);
+    background:#151515;
+    color:#777;
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.language-switcher button:hover,
+.language-switcher button.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
 </style>
+
 </head>
 
 <body>
 
+<!-- ===================================================== -->
+
+<!-- ВЫБОР ЯЗЫКА -->
+
+<!-- ===================================================== -->
+
+<div class="language-overlay" id="languageOverlay">
+    <div class="language-modal">
+        <h2 data-i18n="languageTitle">Выберите язык</h2>
+        <p data-i18n="languageSubtitle">Выберите язык для просмотра сайта</p>
+
+```
+    <div class="language-buttons">
+        <button class="language-button" data-language="ru">RU</button>
+        <button class="language-button" data-language="kk">KZ</button>
+        <button class="language-button" data-language="en">EN</button>
+    </div>
+</div>
+```
+
+</div>
+
+<!-- ===================================================== -->
+
+<!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+
+<!-- ===================================================== -->
+
+<div class="language-switcher">
+    <button data-language="ru">RU</button>
+    <button data-language="kk">KZ</button>
+    <button data-language="en">EN</button>
+</div>
+
 <div class="page">
 
-    <!-- ЛОГО -->
-    <img src="../img/logo.png" class="logo" alt="logo">
+```
+<!-- ЛОГО -->
+<img
+    src="../img/logo.png"
+    class="logo"
+    alt="Логотип ELEMENT Craft Games"
+    data-i18n-alt="logoAlt"
+>
 
-    <!-- НАЗВАНИЕ -->
-    <div class="title">
-        Коромысло
+<!-- НАЗВАНИЕ -->
+<div class="title" data-i18n="title">
+    Коромысло
+</div>
+
+<!-- КОНТЕНТ -->
+<div class="content">
+
+    <!-- КАРТИНКА -->
+    <div class="image-box">
+        <img
+            src="../img/games/koromyslo.jpg"
+            alt="Коромысло"
+            data-i18n-alt="imageAlt"
+        >
     </div>
 
-    <!-- КОНТЕНТ -->
-    <div class="content">
+    <!-- ИНФОРМАЦИЯ -->
+    <div class="info">
 
-        <!-- КАРТИНКА -->
-        <div class="image-box">
-            <img src="../img/games/koromyslo.jpg" alt="Коромысло">
+        <!-- ОПИСАНИЕ -->
+        <div class="desc" data-i18n="description">
+            «Коромысло» — это игра на баланс и стратегическое мышление. Игроки должны аккуратно размещать шары на движущихся уровнях конструкции, стараясь сохранить равновесие и не допустить их падения.
         </div>
 
-        <!-- ИНФОРМАЦИЯ -->
-        <div class="info">
+        <!-- ПРЕИМУЩЕСТВА -->
+        <div class="features">
 
-            <!-- ОПИСАНИЕ -->
-            <div class="desc">
-                «Коромысло» — это игра на баланс и стратегическое мышление. Игроки должны аккуратно размещать шары на движущихся уровнях конструкции, стараясь сохранить равновесие и не допустить их падения.
+            <div class="feature" data-i18n="feature1">
+                Тренирует терпение и концентрацию
             </div>
 
-            <!-- ПРЕИМУЩЕСТВА -->
-            <div class="features">
-                <div class="feature">
-                    Тренирует терпение и концентрацию
-                </div>
-                <div class="feature">
-                    Уникальная механика баланса
-                </div>
-                <div class="feature">
-                    Развивает точность движений
-                </div>
-                <div class="feature">
-                    Увлекательный процесс для каждого
-                </div>
+            <div class="feature" data-i18n="feature2">
+                Уникальная механика баланса
             </div>
 
-            <!-- КНОПКА НАЗАД -->
-            <a href="../index.html#games" class="back-btn">
-                Вернуться назад
-            </a>
+            <div class="feature" data-i18n="feature3">
+                Развивает точность движений
+            </div>
+
+            <div class="feature" data-i18n="feature4">
+                Увлекательный процесс для каждого
+            </div>
 
         </div>
+
+        <!-- КНОПКА НАЗАД -->
+        <a href="../index.html#games" class="back-btn" data-i18n="back">
+            Вернуться назад
+        </a>
 
     </div>
 
 </div>
+```
+
+</div>
+
+<script>
+
+const ELEMENT_LANGUAGE_KEY = 'element_language';
+
+const translations = {
+
+    ru: {
+        pageTitle: 'Коромысло — ELEMENT Craft Games',
+
+        languageTitle: 'Выберите язык',
+        languageSubtitle: 'Выберите язык для просмотра сайта',
+
+        title: 'Коромысло',
+
+        description: '«Коромысло» — это игра на баланс и стратегическое мышление. Игроки должны аккуратно размещать шары на движущихся уровнях конструкции, стараясь сохранить равновесие и не допустить их падения.',
+
+        feature1: 'Тренирует терпение и концентрацию',
+        feature2: 'Уникальная механика баланса',
+        feature3: 'Развивает точность движений',
+        feature4: 'Увлекательный процесс для каждого',
+
+        back: 'Вернуться назад',
+
+        logoAlt: 'Логотип ELEMENT Craft Games',
+        imageAlt: 'Коромысло'
+    },
+
+    kk: {
+        pageTitle: 'Коромысло — ELEMENT Craft Games',
+
+        languageTitle: 'Тілді таңдаңыз',
+        languageSubtitle: 'Сайтты көру үшін тілді таңдаңыз',
+
+        title: 'Коромысло',
+
+        description: '«Коромысло» — тепе-теңдік пен стратегиялық ойлауға арналған ойын. Ойыншылар конструкцияның қозғалып тұратын деңгейлеріне шарларды абайлап орналастырып, тепе-теңдікті сақтауға және шарлардың құлап кетуіне жол бермеуге тырысады.',
+
+        feature1: 'Сабырлылық пен зейінді дамытады',
+        feature2: 'Бірегей тепе-теңдік механикасы',
+        feature3: 'Қозғалыс дәлдігін дамытады',
+        feature4: 'Барлығына қызықты ойын процесі',
+
+        back: 'Артқа қайту',
+
+        logoAlt: 'ELEMENT Craft Games логотипі',
+        imageAlt: 'Коромысло ойыны'
+    },
+
+    en: {
+        pageTitle: 'Balance Beam — ELEMENT Craft Games',
+
+        languageTitle: 'Choose your language',
+        languageSubtitle: 'Choose a language to view the website',
+
+        title: 'Balance Beam',
+
+        description: 'Balance Beam is a game of balance and strategic thinking. Players must carefully place balls on the moving levels of the structure, trying to maintain equilibrium and prevent them from falling.',
+
+        feature1: 'Builds patience and concentration',
+        feature2: 'Unique balance-based mechanics',
+        feature3: 'Develops movement precision',
+        feature4: 'An engaging process for everyone',
+
+        back: 'Go back',
+
+        logoAlt: 'ELEMENT Craft Games logo',
+        imageAlt: 'Balance Beam game'
+    }
+
+};
+
+function getCurrentLanguage(){
+
+    const savedLanguage = localStorage.getItem(ELEMENT_LANGUAGE_KEY);
+
+    if(savedLanguage && translations[savedLanguage]){
+        return savedLanguage;
+    }
+
+    return null;
+}
+
+function applyLanguage(language){
+
+    if(!translations[language]) return;
+
+    const translation = translations[language];
+
+    document.documentElement.lang =
+        language === 'kk' ? 'kk' : language;
+
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+
+        const key = element.getAttribute('data-i18n');
+
+        if(translation[key] !== undefined){
+            element.textContent = translation[key];
+        }
+
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+
+        const key = element.getAttribute('data-i18n-alt');
+
+        if(translation[key] !== undefined){
+            element.alt = translation[key];
+        }
+
+    });
+
+    if(translation.pageTitle){
+        document.title = translation.pageTitle;
+    }
+
+    document.querySelectorAll('.language-switcher button').forEach(button => {
+
+        button.classList.toggle(
+            'active',
+            button.dataset.language === language
+        );
+
+    });
+
+}
+
+function setLanguage(language){
+
+    if(!translations[language]) return;
+
+    localStorage.setItem(ELEMENT_LANGUAGE_KEY, language);
+
+    applyLanguage(language);
+
+    const overlay = document.getElementById('languageOverlay');
+
+    if(overlay){
+        overlay.style.display = 'none';
+    }
+
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const savedLanguage = getCurrentLanguage();
+    const overlay = document.getElementById('languageOverlay');
+
+    document.querySelectorAll('[data-language]').forEach(button => {
+
+        button.addEventListener('click', () => {
+            setLanguage(button.dataset.language);
+        });
+
+    });
+
+    if(savedLanguage){
+
+        applyLanguage(savedLanguage);
+
+        if(overlay){
+            overlay.style.display = 'none';
+        }
+
+    } else {
+
+        if(overlay){
+            overlay.style.display = 'flex';
+        }
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
