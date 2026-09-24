@@ -18,7 +18,7 @@
 /* ===================================================== */
 
 :root {
-    --accent: #c4d600; /* Тот самый неоновый лайм */
+    --accent: #c4d600;
     --bg: #0d0d0d;
     --card-bg: #1a1a1a;
     --text-main: #ffffff;
@@ -34,30 +34,129 @@
 
 body{
     font-family:'Montserrat',sans-serif;
-    background-color: var(--bg);
-    color: var(--text-main);
+    background-color:var(--bg);
+    color:var(--text-main);
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:40px;
-    overflow-x: hidden;
+    overflow-x:hidden;
 
-    /* Глобальный масштаб 80% */
-    zoom: 0.8; 
-    -moz-transform: scale(0.8); 
-    -moz-transform-origin: top center;
+    zoom:0.8;
+    -moz-transform:scale(0.8);
+    -moz-transform-origin:top center;
 }
 
-/* Текстура шума на фоне */
+/* ===================================================== */
+/* ТЕКСТУРА */
+/* ===================================================== */
+
 body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 1;
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity:0.05;
+    pointer-events:none;
+    z-index:1;
+}
+
+/* ===================================================== */
+/* ЯЗЫК */
+/* ===================================================== */
+
+.language-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    backdrop-filter:blur(12px);
+}
+
+.language-modal{
+    width:520px;
+    padding:50px;
+    background:#151515;
+    border:1px solid rgba(255,255,255,0.15);
+    text-align:center;
+    box-shadow:0 30px 100px rgba(0,0,0,0.7);
+}
+
+.language-modal h2{
+    font-size:32px;
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.language-modal p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:35px;
+}
+
+.language-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.language-button{
+    height:60px;
+    border:1px solid rgba(255,255,255,0.15);
+    background:#202020;
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.language-button:hover{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+/* ===================================================== */
+/* ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА */
+/* ===================================================== */
+
+.language-switcher{
+    position:fixed;
+    top:25px;
+    left:25px;
+    display:flex;
+    gap:5px;
+    z-index:10000;
+}
+
+.language-switcher button{
+    width:42px;
+    height:34px;
+    border:1px solid rgba(255,255,255,0.2);
+    background:#151515;
+    color:#777;
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.language-switcher button:hover,
+.language-switcher button.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
 }
 
 /* ===================================================== */
@@ -67,12 +166,12 @@ body::before {
 .page{
     width:1400px;
     min-height:750px;
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background:var(--bg);
+    border:1px solid var(--border);
     position:relative;
     overflow:hidden;
     padding:60px;
-    z-index: 2;
+    z-index:2;
 }
 
 /* ===================================================== */
@@ -81,10 +180,10 @@ body::before {
 
 .logo{
     position:absolute;
-    top: 50px;
-    right: 60px;
-    width: 240px;
-    filter: brightness(0) invert(1);
+    top:50px;
+    right:60px;
+    width:240px;
+    filter:brightness(0) invert(1);
     z-index:10;
 }
 
@@ -93,24 +192,24 @@ body::before {
 /* ===================================================== */
 
 .title{
-    font-size: 72px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--text-main);
+    font-size:72px;
+    font-weight:900;
+    text-transform:uppercase;
+    color:var(--text-main);
     display:flex;
     align-items:center;
     gap:25px;
     margin-bottom:50px;
     position:relative;
     z-index:2;
-    letter-spacing: -1px;
+    letter-spacing:-1px;
 }
 
 .title::before{
     content:'';
-    width: 10px;
-    height: 65px;
-    background: var(--accent);
+    width:10px;
+    height:65px;
+    background:var(--accent);
 }
 
 /* ===================================================== */
@@ -119,8 +218,8 @@ body::before {
 
 .content{
     display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
     align-items:start;
     position:relative;
     z-index:2;
@@ -131,10 +230,10 @@ body::before {
 /* ===================================================== */
 
 .image-box{
-    height: 550px;
-    border: 1px solid var(--border);
+    height:550px;
+    border:1px solid var(--border);
     overflow:hidden;
-    background: var(--card-bg);
+    background:var(--card-bg);
     position:relative;
 }
 
@@ -159,11 +258,11 @@ body::before {
 /* ===================================================== */
 
 .desc{
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--text-gray);
-    border-left: 4px solid var(--accent);
-    padding-left: 25px;
+    font-size:20px;
+    line-height:1.7;
+    color:var(--text-gray);
+    border-left:4px solid var(--accent);
+    padding-left:25px;
 }
 
 /* ===================================================== */
@@ -176,20 +275,20 @@ body::before {
 }
 
 .feature{
-    background: var(--card-bg);
-    padding: 22px 30px;
-    border: 1px solid var(--border);
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: 0.3s;
+    background:var(--card-bg);
+    padding:22px 30px;
+    border:1px solid var(--border);
+    font-weight:700;
+    font-size:16px;
+    color:var(--text-main);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    transition:0.3s;
 }
 
 .feature:hover{
-    border-color: var(--accent);
-    background: #222;
+    border-color:var(--accent);
+    background:#222;
 }
 
 /* ===================================================== */
@@ -197,24 +296,24 @@ body::before {
 /* ===================================================== */
 
 .back-btn{
-    margin-top: 15px;
-    height: 75px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #000;
-    background: var(--accent);
-    transition: 0.3s;
+    margin-top:15px;
+    height:75px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#000;
+    background:var(--accent);
+    transition:0.3s;
 }
 
 .back-btn:hover{
-    background: #fff;
-    transform: translateY(-5px);
+    background:#fff;
+    transform:translateY(-5px);
 }
 
 </style>
@@ -222,13 +321,65 @@ body::before {
 
 <body>
 
+<!-- ===================================================== -->
+<!-- ВЫБОР ЯЗЫКА -->
+<!-- ===================================================== -->
+
+<div class="language-overlay" id="languageOverlay">
+
+    <div class="language-modal">
+
+        <h2 data-i18n="languageTitle">
+            Выберите язык
+        </h2>
+
+        <p data-i18n="languageSubtitle">
+            Выберите язык для просмотра сайта
+        </p>
+
+        <div class="language-buttons">
+
+            <button class="language-button" data-language="ru">
+                RU
+            </button>
+
+            <button class="language-button" data-language="kk">
+                KZ
+            </button>
+
+            <button class="language-button" data-language="en">
+                EN
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+<!-- ===================================================== -->
+
+<div class="language-switcher">
+
+    <button data-language="ru">RU</button>
+    <button data-language="kk">KZ</button>
+    <button data-language="en">EN</button>
+
+</div>
+
 <div class="page">
 
     <!-- ЛОГО -->
-    <img src="../img/logo.png" class="logo" alt="logo">
+    <img
+        src="../img/logo.png"
+        class="logo"
+        alt="ELEMENT Craft Games"
+    >
 
     <!-- НАЗВАНИЕ -->
-    <div class="title">
+    <div class="title" data-i18n="gameTitle">
         Эластик
     </div>
 
@@ -237,35 +388,53 @@ body::before {
 
         <!-- КАРТИНКА -->
         <div class="image-box">
-            <img src="../img/games/elastik.jpg" alt="Эластик">
+
+            <img
+                src="../img/games/elastik.jpg"
+                data-i18n-alt="gameTitle"
+                alt="Эластик"
+            >
+
         </div>
 
         <!-- ИНФОРМАЦИЯ -->
         <div class="info">
 
             <!-- ОПИСАНИЕ -->
-            <div class="desc">
-                «Эластик» — это супердинамичная настольная игра для двух игроков, где всё решают секунды, точность и чистый азарт. Цель — с помощью эластичной резинки быстрее соперника запустить все деревянные фишки через узкие ворота на противоположную сторону поля.
+            <div class="desc" data-i18n="description">
+                «Эластик» — это супердинамичная настольная игра для двух игроков,
+                где всё решают секунды, точность и чистый азарт. Цель — с помощью
+                эластичной резинки быстрее соперника запустить все деревянные
+                фишки через узкие ворота на противоположную сторону поля.
             </div>
 
             <!-- ПРЕИМУЩЕСТВА -->
             <div class="features">
-                <div class="feature">
+
+                <div class="feature" data-i18n="feature1">
                     Развивает молниеносную реакцию и координацию
                 </div>
-                <div class="feature">
+
+                <div class="feature" data-i18n="feature2">
                     Азартный формат для любого возраста
                 </div>
-                <div class="feature">
+
+                <div class="feature" data-i18n="feature3">
                     Взрывные эмоции и быстрые партии за 2 минуты
                 </div>
-                <div class="feature">
+
+                <div class="feature" data-i18n="feature4">
                     Качественный крафтовый реквизит из натурального дерева
                 </div>
+
             </div>
 
             <!-- КНОПКА НАЗАД -->
-            <a href="../index.html#games" class="back-btn">
+            <a
+                href="../index.html#games"
+                class="back-btn"
+                data-i18n="back"
+            >
                 Вернуться назад
             </a>
 
@@ -275,5 +444,356 @@ body::before {
 
 </div>
 
+<script>
+
+/* ===================================================== */
+/* ELEMENT LANGUAGE SYSTEM */
+/* ===================================================== */
+
+const ELEMENT_LANGUAGE_KEY = 'element_language';
+
+const translations = {
+
+    /* ================================================= */
+    /* РУССКИЙ */
+    /* ================================================= */
+
+    ru: {
+
+        pageTitle:
+            'Эластик — ELEMENT Craft Games',
+
+        gameTitle:
+            'Эластик',
+
+        description:
+            '«Эластик» — это супердинамичная настольная игра для двух игроков, где всё решают секунды, точность и чистый азарт. Цель — с помощью эластичной резинки быстрее соперника запустить все деревянные фишки через узкие ворота на противоположную сторону поля.',
+
+        feature1:
+            'Развивает молниеносную реакцию и координацию',
+
+        feature2:
+            'Азартный формат для любого возраста',
+
+        feature3:
+            'Взрывные эмоции и быстрые партии за 2 минуты',
+
+        feature4:
+            'Качественный крафтовый реквизит из натурального дерева',
+
+        back:
+            'Вернуться назад',
+
+        languageTitle:
+            'Выберите язык',
+
+        languageSubtitle:
+            'Выберите язык для просмотра сайта'
+
+    },
+
+
+    /* ================================================= */
+    /* КАЗАХСКИЙ */
+    /* ================================================= */
+
+    kk: {
+
+        pageTitle:
+            'Эластик — ELEMENT Craft Games',
+
+        gameTitle:
+            'Эластик',
+
+        description:
+            '«Эластик» — екі ойыншыға арналған өте динамикалық үстел ойыны, мұнда бәрін секундтар, дәлдік және таза бәсеке шешеді. Мақсат — серпімді резинаның көмегімен барлық ағаш фишкаларды қарсыластан бұрын алаңның қарама-қарсы жағындағы тар қақпа арқылы өткізу.',
+
+        feature1:
+            'Жылдам реакция мен үйлесімділікті дамытады',
+
+        feature2:
+            'Кез келген жасқа арналған қызықты ойын форматы',
+
+        feature3:
+            'Екі минутқа дейінгі жылдам партиялар мен жарқын эмоциялар',
+
+        feature4:
+            'Табиғи ағаштан жасалған сапалы крафт реквизиті',
+
+        back:
+            'Артқа қайту',
+
+        languageTitle:
+            'Тілді таңдаңыз',
+
+        languageSubtitle:
+            'Сайтты көру үшін тілді таңдаңыз'
+
+    },
+
+
+    /* ================================================= */
+    /* ENGLISH */
+    /* ================================================= */
+
+    en: {
+
+        pageTitle:
+            'Elastic — ELEMENT Craft Games',
+
+        gameTitle:
+            'Elastic',
+
+        description:
+            'Elastic is a super-dynamic tabletop game for two players where everything comes down to seconds, accuracy and pure excitement. The goal is to use an elastic band to launch all the wooden pieces through the narrow gate to the opposite side of the board faster than your opponent.',
+
+        feature1:
+            'Develops lightning-fast reaction and coordination',
+
+        feature2:
+            'An exciting format suitable for all ages',
+
+        feature3:
+            'Explosive emotions and fast-paced games lasting up to 2 minutes',
+
+        feature4:
+            'High-quality craft equipment made from natural wood',
+
+        back:
+            'Go back',
+
+        languageTitle:
+            'Choose your language',
+
+        languageSubtitle:
+            'Choose a language to view the website'
+
+    }
+
+};
+
+
+/* ===================================================== */
+/* ПОЛУЧЕНИЕ ТЕКУЩЕГО ЯЗЫКА */
+/* ===================================================== */
+
+function getCurrentLanguage(){
+
+    const savedLanguage =
+        localStorage.getItem(
+            ELEMENT_LANGUAGE_KEY
+        );
+
+    if(
+        savedLanguage &&
+        translations[savedLanguage]
+    ){
+
+        return savedLanguage;
+
+    }
+
+    return null;
+}
+
+
+/* ===================================================== */
+/* ПРИМЕНЕНИЕ ЯЗЫКА */
+/* ===================================================== */
+
+function applyLanguage(language){
+
+    if(!translations[language]){
+        return;
+    }
+
+    const translation =
+        translations[language];
+
+
+    /* HTML LANG */
+
+    document.documentElement.lang =
+        language === 'kk'
+            ? 'kk'
+            : language;
+
+
+    /* ОСНОВНОЙ ТЕКСТ */
+
+    document
+        .querySelectorAll('[data-i18n]')
+        .forEach(element => {
+
+            const key =
+                element.getAttribute(
+                    'data-i18n'
+                );
+
+            if(
+                translation[key] !== undefined
+            ){
+
+                element.textContent =
+                    translation[key];
+
+            }
+
+        });
+
+
+    /* ALT ИЗОБРАЖЕНИЯ */
+
+    document
+        .querySelectorAll('[data-i18n-alt]')
+        .forEach(element => {
+
+            const key =
+                element.getAttribute(
+                    'data-i18n-alt'
+                );
+
+            if(
+                translation[key] !== undefined
+            ){
+
+                element.alt =
+                    translation[key];
+
+            }
+
+        });
+
+
+    /* TITLE */
+
+    if(translation.pageTitle){
+
+        document.title =
+            translation.pageTitle;
+
+    }
+
+
+    /* АКТИВНАЯ КНОПКА */
+
+    document
+        .querySelectorAll(
+            '.language-switcher button'
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.language === language
+            );
+
+        });
+
+}
+
+
+/* ===================================================== */
+/* УСТАНОВКА ЯЗЫКА */
+/* ===================================================== */
+
+function setLanguage(language){
+
+    if(!translations[language]){
+        return;
+    }
+
+    localStorage.setItem(
+        ELEMENT_LANGUAGE_KEY,
+        language
+    );
+
+    applyLanguage(language);
+
+
+    const overlay =
+        document.getElementById(
+            'languageOverlay'
+        );
+
+    if(overlay){
+
+        overlay.style.display =
+            'none';
+
+    }
+
+}
+
+
+/* ===================================================== */
+/* ИНИЦИАЛИЗАЦИЯ */
+/* ===================================================== */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+
+        const savedLanguage =
+            getCurrentLanguage();
+
+        const overlay =
+            document.getElementById(
+                'languageOverlay'
+            );
+
+
+        /* КНОПКИ ЯЗЫКА */
+
+        document
+            .querySelectorAll(
+                '[data-language]'
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        setLanguage(
+                            button.dataset.language
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* ЯЗЫК УЖЕ СОХРАНЁН */
+
+        if(savedLanguage){
+
+            applyLanguage(
+                savedLanguage
+            );
+
+            overlay.style.display =
+                'none';
+
+        }
+
+
+        /* ЯЗЫК ЕЩЁ НЕ ВЫБРАН */
+
+        else{
+
+            overlay.style.display =
+                'flex';
+
+        }
+
+    }
+);
+
+</script>
+
 </body>
 </html>
+
+Готово. Следующий HTML кидай — буду переделывать **в таком же формате, без изменения дизайна и путей к картинкам**.
