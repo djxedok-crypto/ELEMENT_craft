@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
 
@@ -13,12 +14,8 @@
 
 <style>
 
-/* ===================================================== */
-/* БАЗА */
-/* ===================================================== */
-
 :root {
-    --accent: #c4d600; /* Тот самый неоновый лайм */
+    --accent: #c4d600;
     --bg: #0d0d0d;
     --card-bg: #1a1a1a;
     --text-main: #ffffff;
@@ -34,107 +31,88 @@
 
 body{
     font-family:'Montserrat',sans-serif;
-    background-color: var(--bg);
-    color: var(--text-main);
+    background-color:var(--bg);
+    color:var(--text-main);
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:40px;
-    overflow-x: hidden;
+    overflow-x:hidden;
 
-    /* Глобальный масштаб 80% */
-    zoom: 0.8; 
-    -moz-transform: scale(0.8); 
-    -moz-transform-origin: top center;
+    zoom:0.8;
+    -moz-transform:scale(0.8);
+    -moz-transform-origin:top center;
 }
 
-/* Текстура шума на фоне */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 1;
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity:0.05;
+    pointer-events:none;
+    z-index:1;
 }
-
-/* ===================================================== */
-/* ОСНОВНАЯ КАРТОЧКА */
-/* ===================================================== */
 
 .page{
     width:1400px;
     min-height:750px;
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background:var(--bg);
+    border:1px solid var(--border);
     position:relative;
     overflow:hidden;
     padding:60px;
-    z-index: 2;
+    z-index:2;
 }
-
-/* ===================================================== */
-/* ЛОГО */
-/* ===================================================== */
 
 .logo{
     position:absolute;
-    top: 50px;
-    right: 60px;
-    width: 240px;
-    filter: brightness(0) invert(1);
+    top:50px;
+    right:60px;
+    width:240px;
+    filter:brightness(0) invert(1);
     z-index:10;
 }
 
-/* ===================================================== */
-/* ЗАГОЛОВОК */
-/* ===================================================== */
-
 .title{
-    font-size: 72px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--text-main);
+    font-size:72px;
+    font-weight:900;
+    text-transform:uppercase;
+    color:var(--text-main);
     display:flex;
     align-items:center;
     gap:25px;
     margin-bottom:50px;
     position:relative;
     z-index:2;
-    letter-spacing: -1px;
+    letter-spacing:-1px;
 }
 
 .title::before{
     content:'';
-    width: 10px;
-    height: 65px;
-    background: var(--accent);
+    width:10px;
+    height:65px;
+    background:var(--accent);
 }
-
-/* ===================================================== */
-/* КОНТЕНТ */
-/* ===================================================== */
 
 .content{
     display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
     align-items:start;
     position:relative;
     z-index:2;
 }
 
-/* ===================================================== */
-/* КАРТИНКА */
-/* ===================================================== */
-
 .image-box{
-    height: 550px;
-    border: 1px solid var(--border);
+    height:550px;
+    border:1px solid var(--border);
     overflow:hidden;
-    background: var(--card-bg);
+    background:var(--card-bg);
     position:relative;
 }
 
@@ -144,31 +122,19 @@ body::before {
     object-fit:cover;
 }
 
-/* ===================================================== */
-/* ИНФО */
-/* ===================================================== */
-
 .info{
     display:flex;
     flex-direction:column;
     gap:35px;
 }
 
-/* ===================================================== */
-/* ОПИСАНИЕ */
-/* ===================================================== */
-
 .desc{
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--text-gray);
-    border-left: 4px solid var(--accent);
-    padding-left: 25px;
+    font-size:20px;
+    line-height:1.7;
+    color:var(--text-gray);
+    border-left:4px solid var(--accent);
+    padding-left:25px;
 }
-
-/* ===================================================== */
-/* ФИШКИ */
-/* ===================================================== */
 
 .features{
     display:grid;
@@ -176,107 +142,556 @@ body::before {
 }
 
 .feature{
-    background: var(--card-bg);
-    padding: 22px 30px;
-    border: 1px solid var(--border);
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: 0.3s;
+    background:var(--card-bg);
+    padding:22px 30px;
+    border:1px solid var(--border);
+    font-weight:700;
+    font-size:16px;
+    color:var(--text-main);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    transition:0.3s;
 }
 
 .feature:hover{
-    border-color: var(--accent);
-    background: #222;
+    border-color:var(--accent);
+    background:#222;
 }
 
-/* ===================================================== */
-/* КНОПКА НАЗАД */
-/* ===================================================== */
-
 .back-btn{
-    margin-top: 15px;
-    height: 75px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #000;
-    background: var(--accent);
-    transition: 0.3s;
+    margin-top:15px;
+    height:75px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#000;
+    background:var(--accent);
+    transition:0.3s;
 }
 
 .back-btn:hover{
-    background: #fff;
-    transform: translateY(-5px);
+    background:#fff;
+    transform:translateY(-5px);
+}
+
+/* ===================================================== */
+/* ЯЗЫК */
+/* ===================================================== */
+
+.language-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    backdrop-filter:blur(12px);
+}
+
+.language-modal{
+    width:520px;
+    padding:50px;
+    background:#151515;
+    border:1px solid rgba(255,255,255,.15);
+    text-align:center;
+    box-shadow:0 30px 100px rgba(0,0,0,.7);
+}
+
+.language-modal h2{
+    font-size:32px;
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.language-modal p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:35px;
+}
+
+.language-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.language-button{
+    height:60px;
+    border:1px solid rgba(255,255,255,.15);
+    background:#202020;
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.language-button:hover{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+.language-switcher{
+    position:fixed;
+    top:25px;
+    left:25px;
+    display:flex;
+    gap:5px;
+    z-index:10000;
+}
+
+.language-switcher button{
+    width:42px;
+    height:34px;
+    border:1px solid rgba(255,255,255,.2);
+    background:#151515;
+    color:#777;
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.language-switcher button:hover,
+.language-switcher button.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- ===================================================== -->
-<!-- СТРАНИЦА -->
+
+<!-- ВЫБОР ЯЗЫКА -->
+
 <!-- ===================================================== -->
-<div class="page">
 
-    <!-- ЛОГО -->
-    <img src="../img/logo.png" class="logo" alt="logo">
+<div class="language-overlay" id="languageOverlay">
 
-    <!-- НАЗВАНИЕ -->
-    <div class="title">
-        ЗигЗаг
-    </div>
+```
+<div class="language-modal">
 
-    <!-- КОНТЕНТ -->
-    <div class="content">
+    <h2 data-i18n="languageTitle">
+        Выберите язык
+    </h2>
 
-        <!-- КАРТИНКА -->
-        <div class="image-box">
-            <img src="../img/games/zigzag.jpg" alt="ЗигЗаг">
-        </div>
+    <p data-i18n="languageSubtitle">
+        Выберите язык для просмотра сайта
+    </p>
 
-        <!-- ИНФОРМАЦИЯ -->
-        <div class="info">
+    <div class="language-buttons">
 
-            <!-- ОПИСАНИЕ -->
-            <div class="desc">
-                «Зигзаг» — это игра на плавность и точность движений. Участникам нужно провести шар по извилистому желобу, постепенно увеличивая сложность и набирая очки в зависимости от того, как далеко удалось продвинуться.
-            </div>
+        <button class="language-button" data-language="ru">
+            RU
+        </button>
 
-            <!-- ПРЕИМУЩЕСТВА -->
-            <div class="features">
-                <div class="feature">
-                    Тренирует контроль и выдержку
-                </div>
-                <div class="feature">
-                    Увлекательный соревновательный процесс
-                </div>
-                <div class="feature">
-                    Лаконичный и функциональный реквизит
-                </div>
-                <div class="feature">
-                    Подходит для игроков любого уровня подготовки
-                </div>
-            </div>
+        <button class="language-button" data-language="kk">
+            KZ
+        </button>
 
-            <!-- КНОПКА НАЗАД -->
-            <a href="../index.html#games" class="back-btn">
-                Вернуться назад
-            </a>
-
-        </div>
+        <button class="language-button" data-language="en">
+            EN
+        </button>
 
     </div>
 
 </div>
+```
+
+</div>
+
+<!-- ===================================================== -->
+
+<!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+
+<!-- ===================================================== -->
+
+<div class="language-switcher">
+
+```
+<button data-language="ru">RU</button>
+<button data-language="kk">KZ</button>
+<button data-language="en">EN</button>
+```
+
+</div>
+
+<!-- ===================================================== -->
+
+<!-- СТРАНИЦА -->
+
+<!-- ===================================================== -->
+
+<div class="page">
+
+```
+<!-- ЛОГО -->
+
+<img
+    src="../img/logo.png"
+    class="logo"
+    alt="ELEMENT Craft Games"
+    data-i18n-alt="logoAlt"
+>
+
+<!-- НАЗВАНИЕ -->
+
+<div class="title" data-i18n="title">
+    ЗигЗаг
+</div>
+
+<!-- КОНТЕНТ -->
+
+<div class="content">
+
+    <!-- КАРТИНКА -->
+
+    <div class="image-box">
+
+        <img
+            src="../img/games/zigzag.jpg"
+            alt="ЗигЗаг"
+            data-i18n-alt="imageAlt"
+        >
+
+    </div>
+
+    <!-- ИНФОРМАЦИЯ -->
+
+    <div class="info">
+
+        <!-- ОПИСАНИЕ -->
+
+        <div class="desc" data-i18n="description">
+            «Зигзаг» — это игра на плавность и точность движений. Участникам нужно провести шар по извилистому желобу, постепенно увеличивая сложность и набирая очки в зависимости от того, как далеко удалось продвинуться.
+        </div>
+
+        <!-- ПРЕИМУЩЕСТВА -->
+
+        <div class="features">
+
+            <div class="feature" data-i18n="feature1">
+                Тренирует контроль и выдержку
+            </div>
+
+            <div class="feature" data-i18n="feature2">
+                Увлекательный соревновательный процесс
+            </div>
+
+            <div class="feature" data-i18n="feature3">
+                Лаконичный и функциональный реквизит
+            </div>
+
+            <div class="feature" data-i18n="feature4">
+                Подходит для игроков любого уровня подготовки
+            </div>
+
+        </div>
+
+        <!-- КНОПКА НАЗАД -->
+
+        <a
+            href="../index.html#games"
+            class="back-btn"
+            data-i18n="back"
+        >
+            Вернуться назад
+        </a>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+const ELEMENT_LANGUAGE_KEY = 'element_language';
+
+const translations = {
+
+    ru: {
+
+        pageTitle: 'ЗигЗаг — ELEMENT Craft Games',
+
+        languageTitle: 'Выберите язык',
+        languageSubtitle: 'Выберите язык для просмотра сайта',
+
+        logoAlt: 'ELEMENT Craft Games',
+        imageAlt: 'ЗигЗаг',
+
+        title: 'ЗигЗаг',
+
+        description:
+            '«Зигзаг» — это игра на плавность и точность движений. Участникам нужно провести шар по извилистому желобу, постепенно увеличивая сложность и набирая очки в зависимости от того, как далеко удалось продвинуться.',
+
+        feature1:
+            'Тренирует контроль и выдержку',
+
+        feature2:
+            'Увлекательный соревновательный процесс',
+
+        feature3:
+            'Лаконичный и функциональный реквизит',
+
+        feature4:
+            'Подходит для игроков любого уровня подготовки',
+
+        back:
+            'Вернуться назад'
+
+    },
+
+    kk: {
+
+        pageTitle: 'ЗигЗаг — ELEMENT Craft Games',
+
+        languageTitle: 'Тілді таңдаңыз',
+        languageSubtitle: 'Сайтты көру үшін тілді таңдаңыз',
+
+        logoAlt: 'ELEMENT Craft Games',
+        imageAlt: 'ЗигЗаг',
+
+        title: 'ЗигЗаг',
+
+        description:
+            '«Зигзаг» — қозғалыстың бірқалыптылығы мен дәлдігін сынайтын ойын. Қатысушылар допты ирек науа бойымен жүргізіп, қиындық деңгейін біртіндеп арттырады және қаншалықты алға жылжығанына қарай ұпай жинайды.',
+
+        feature1:
+            'Қозғалысты бақылау мен төзімділікті дамытады',
+
+        feature2:
+            'Қызықты жарыс процесі',
+
+        feature3:
+            'Ықшам әрі функционалды реквизит',
+
+        feature4:
+            'Кез келген дайындық деңгейіндегі ойыншыларға жарайды',
+
+        back:
+            'Артқа қайту'
+
+    },
+
+    en: {
+
+        pageTitle: 'ZigZag — ELEMENT Craft Games',
+
+        languageTitle: 'Choose your language',
+        languageSubtitle: 'Choose a language to view the website',
+
+        logoAlt: 'ELEMENT Craft Games',
+        imageAlt: 'ZigZag',
+
+        title: 'ZigZag',
+
+        description:
+            'ZigZag is a game of smooth and precise movement. Players must guide a ball along a winding track, gradually increasing the difficulty and earning points based on how far they manage to progress.',
+
+        feature1:
+            'Builds control and endurance',
+
+        feature2:
+            'An engaging competitive experience',
+
+        feature3:
+            'Minimalist and functional equipment',
+
+        feature4:
+            'Suitable for players of all skill levels',
+
+        back:
+            'Go back'
+
+    }
+
+};
+
+
+function getCurrentLanguage(){
+
+    const savedLanguage =
+        localStorage.getItem(ELEMENT_LANGUAGE_KEY);
+
+    if(
+        savedLanguage &&
+        translations[savedLanguage]
+    ){
+        return savedLanguage;
+    }
+
+    return null;
+
+}
+
+
+function applyLanguage(language){
+
+    if(!translations[language]) return;
+
+    const translation =
+        translations[language];
+
+    document.documentElement.lang =
+        language === 'kk'
+            ? 'kk'
+            : language;
+
+
+    document
+        .querySelectorAll('[data-i18n]')
+        .forEach(element => {
+
+            const key =
+                element.getAttribute('data-i18n');
+
+            if(
+                translation[key] !== undefined
+            ){
+                element.textContent =
+                    translation[key];
+            }
+
+        });
+
+
+    document
+        .querySelectorAll('[data-i18n-alt]')
+        .forEach(element => {
+
+            const key =
+                element.getAttribute('data-i18n-alt');
+
+            if(
+                translation[key] !== undefined
+            ){
+                element.alt =
+                    translation[key];
+            }
+
+        });
+
+
+    if(translation.pageTitle){
+
+        document.title =
+            translation.pageTitle;
+
+    }
+
+
+    document
+        .querySelectorAll('.language-switcher button')
+        .forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.language === language
+            );
+
+        });
+
+}
+
+
+function setLanguage(language){
+
+    if(!translations[language]) return;
+
+    localStorage.setItem(
+        ELEMENT_LANGUAGE_KEY,
+        language
+    );
+
+    applyLanguage(language);
+
+    const overlay =
+        document.getElementById('languageOverlay');
+
+    if(overlay){
+
+        overlay.style.display =
+            'none';
+
+    }
+
+}
+
+
+document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+
+        const savedLanguage =
+            getCurrentLanguage();
+
+        const overlay =
+            document.getElementById('languageOverlay');
+
+
+        document
+            .querySelectorAll('[data-language]')
+            .forEach(button => {
+
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        setLanguage(
+                            button.dataset.language
+                        );
+
+                    }
+                );
+
+            });
+
+
+        if(savedLanguage){
+
+            applyLanguage(
+                savedLanguage
+            );
+
+            if(overlay){
+
+                overlay.style.display =
+                    'none';
+
+            }
+
+        }else{
+
+            if(overlay){
+
+                overlay.style.display =
+                    'flex';
+
+            }
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
