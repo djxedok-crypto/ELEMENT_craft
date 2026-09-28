@@ -1,1357 +1,1464 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1500">
     <title data-i18n="pageTitle">ELEMENT Craft Games | Премиальные игровые зоны</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
-    
 <style>
-:root{
- --acid:#c9f000;
- --black:#050505;
- --white:#f4f4f2;
- --gray:#d8d8d5;
- --line:rgba(255,255,255,.13);
- --card:#111;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- font-family:'Montserrat',sans-serif;
- background:var(--black);
- color:var(--white);
- line-height:1.35;
- overflow-x:hidden;
-}
-body::before{
- content:"";
- position:fixed;inset:0;pointer-events:none;z-index:0;
- background:
-  radial-gradient(ellipse at 52% 92%,rgba(201,240,0,.22) 0%,rgba(201,240,0,.08) 14%,transparent 38%),
-  linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.28));
-}
-.hero{
- min-height:100vh;
- height:100vh;
- position:relative;
- overflow:hidden;
- background:
-  linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.08) 72%,rgba(0,0,0,.45) 100%),
-  radial-gradient(ellipse at 50% 88%,rgba(201,240,0,.18),transparent 34%),
-  #050505;
-}
-.hero::before{
- content:"";
- position:absolute;
- left:-42px;top:-55px;
- width:185px;height:29px;
- background:var(--acid);
- transform:rotate(-56deg);
- z-index:1;
-}
-.hero::after{
- content:"";
- position:absolute;
- right:-36px;bottom:54px;
- width:245px;height:31px;
- background:var(--acid);
- transform:rotate(-43deg);
- z-index:1;
-}
-.hero-box{
- width:min(1650px,calc(100vw - 90px));
- height:100%;
- margin:auto;
- position:relative;
-}
-.logo{
- position:absolute;
- top:55px;
- right:45px;
- width:370px;
- max-width:30vw;
- filter:brightness(0) invert(1);
- z-index:8;
-}
-.hero-content{
- position:absolute;
- left:15px;
- top:12.5%;
- width:48%;
- z-index:5;
-}
-.hero-title{
- font-size:clamp(55px,6.45vw,108px);
- font-weight:900;
- line-height:.87;
- letter-spacing:-4px;
- text-transform:uppercase;
- margin:0;
-}
-.hero-title span{color:var(--acid);display:block}
-.hero-text{
- position:absolute;
- top:455px;
- left:0;
- width:500px;
- max-width:90%;
- border-left:4px solid var(--acid);
- padding:0 0 0 24px;
- color:var(--gray);
- font-size:20px;
- line-height:1.42;
-}
-.hero-actions{display:none}
-.hero-visual{
- position:absolute;
- left:43%;
- top:5%;
- width:42%;
- height:91%;
- display:flex;
- align-items:flex-end;
- justify-content:center;
- z-index:3;
-}
-.hero-visual::before{
- content:"";
- position:absolute;
- left:2%;right:2%;bottom:1%;
- height:90px;
- background:radial-gradient(ellipse,rgba(201,240,0,.38),transparent 68%);
- filter:blur(10px);
-}
-.hero-game{
- position:relative;
- z-index:3;
- width:100%;
- height:100%;
- object-fit:contain;
- object-position:center bottom;
- filter:drop-shadow(0 24px 24px rgba(0,0,0,.8));
-}
-.hero-note{
- position:absolute;
- z-index:6;
- right:-175px;
- top:39%;
- width:245px;
- color:var(--acid);
- font-size:19px;
- line-height:1.25;
- font-weight:700;
- text-transform:uppercase;
- transform:rotate(-6deg);
-}
-.hero-note::before{
- content:"";
- position:absolute;
- width:145px;height:4px;
- background:var(--acid);
- left:-160px;top:78px;
- transform:rotate(-20deg);
- transform-origin:right center;
-}
-.hero-note::after{
- content:"";
- position:absolute;
- left:-170px;top:67px;
- width:18px;height:18px;
- border-left:4px solid var(--acid);
- border-bottom:4px solid var(--acid);
- transform:rotate(42deg);
-}
-.hero-bottom{
- position:absolute;
- left:15px;
- bottom:62px;
- display:flex;
- gap:26px;
- align-items:center;
- z-index:6;
-}
-.hero-feature{
- display:flex;
- align-items:center;
- gap:10px;
- color:var(--gray);
- font-size:12px;
- font-weight:700;
- text-transform:uppercase;
- line-height:1.15;
-}
-.hero-feature .icon{
- color:var(--acid);
- font-size:30px;
- line-height:1;
-}
-.hero-divider{width:2px;height:38px;background:var(--acid)}
-.hero-scroll{
- position:absolute;
- bottom:22px;
- left:50%;
- transform:translateX(-50%);
- color:#777;
- font-size:9px;
- letter-spacing:3px;
- text-transform:uppercase;
- z-index:6;
-}
-.section{
- width:min(1400px,calc(100vw - 100px));
- margin:0 auto 120px;
- position:relative;
- z-index:2;
-}
-.section-header{
- margin-bottom:48px;
- display:flex;
- align-items:flex-end;
- justify-content:space-between;
-}
-.section-title{
- font-size:clamp(48px,5vw,76px);
- font-weight:900;
- text-transform:uppercase;
- line-height:.92;
- letter-spacing:-3px;
-}
-.section-title span{color:var(--acid)}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{
- background:#0d0d0d;
- padding:38px;
- border:1px solid var(--line);
- transition:.3s;
- position:relative;
-}
-.card:hover{border-color:var(--acid);transform:translateY(-5px)}
-.card h3{font-size:27px;text-transform:uppercase;margin-bottom:18px;color:var(--acid)}
-.card p{color:var(--gray);font-size:18px}
-.games-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.game-item{
- height:330px;position:relative;overflow:hidden;border:1px solid var(--line);
- text-decoration:none;background:#000;
-}
-.game-item img{width:100%;height:100%;object-fit:cover;transition:.5s;opacity:.9}
-.game-item:hover img{opacity:1;transform:scale(1.05)}
-.game-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),transparent 58%);pointer-events:none}
-.game-caption{position:absolute;bottom:0;left:0;width:100%;padding:24px;color:#fff;font-weight:900;text-transform:uppercase;font-size:18px;z-index:2}
-.packages{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.pack-card{background:#0d0d0d!important;padding:34px!important;border:1px solid var(--line)!important;display:flex;flex-direction:column}
-.pack-card.active{border:2px solid var(--acid)!important}
-.pack-name{font-size:27px!important;font-weight:900;margin-bottom:22px!important}
-.pack-list li{padding:10px 0!important;border-bottom:1px solid #252525!important;color:var(--gray)!important;font-size:17px!important}
-.price-value,.price-custom-val{color:var(--acid)!important}
-.contact-footer{background:var(--acid);color:#000;padding:90px 50px;text-align:center}
-.footer-title{font-size:clamp(50px,6vw,84px);font-weight:900;text-transform:uppercase;margin-bottom:35px}
-.footer-links{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;font-size:24px;font-weight:700}
-.footer-links a{color:#000;text-decoration:none;border-bottom:3px solid #000}
-#languageOverlay{position:fixed;inset:0;background:rgba(0,0,0,.95);display:flex;align-items:center;justify-content:center;z-index:99999;backdrop-filter:blur(12px)}
-#languageOverlay.hidden{display:none}
-.language-modal{width:min(700px,calc(100vw - 40px));padding:60px 50px;background:#111;border:2px solid var(--acid);text-align:center;box-shadow:0 0 60px rgba(201,240,0,.15)}
-.language-modal h2{font-size:42px;font-weight:900;text-transform:uppercase;margin-bottom:15px}
-.language-modal p{color:#aaa;font-size:20px;margin-bottom:35px}
-.language-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.language-button{border:1px solid #333;background:#1a1a1a;color:#fff;padding:22px 15px;font-family:inherit;font-size:18px;font-weight:900;cursor:pointer;transition:.25s}
-.language-button:hover{background:var(--acid);color:#000;border-color:var(--acid);transform:translateY(-3px)}
-#languageSwitcher{position:fixed;top:22px;left:22px;z-index:9998;display:flex;gap:4px;background:rgba(17,17,17,.92);border:1px solid rgba(255,255,255,.15);padding:4px;backdrop-filter:blur(10px)}
-.lang-switch-btn{border:0;background:transparent;color:#aaa;padding:9px 12px;font-family:inherit;font-weight:900;cursor:pointer;transition:.2s}
-.lang-switch-btn.active,.lang-switch-btn:hover{background:var(--acid);color:#000}
-@media(max-width:1000px){
- .hero{height:auto;min-height:900px}
- .hero-box{width:calc(100vw - 50px)}
- .hero-content{left:0;width:52%}
- .hero-title{font-size:clamp(50px,7vw,82px)}
- .hero-text{top:390px;width:410px}
- .hero-visual{left:40%;width:50%}
- .hero-note{right:-120px;font-size:15px}
- .games-grid{grid-template-columns:repeat(3,1fr)}
- .packages{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:700px){
- .hero{height:auto;min-height:980px}
- .hero::after{right:-100px;bottom:35px}
- .hero-box{width:calc(100vw - 34px)}
- .logo{top:22px;right:0;width:220px;max-width:52vw}
- .hero-content{top:125px;left:0;width:100%}
- .hero-title{font-size:clamp(46px,13vw,72px);letter-spacing:-3px}
- .hero-text{top:355px;font-size:16px;width:340px;max-width:82%}
- .hero-visual{left:7%;top:390px;width:86%;height:520px}
- .hero-note{right:-4px;top:42%;width:135px;font-size:11px}
- .hero-note::before{width:65px;left:-73px;top:40px;height:2px}
- .hero-note::after{left:-79px;top:34px;width:10px;height:10px;border-width:2px}
- .hero-bottom{left:0;bottom:38px;gap:10px}
- .hero-feature{font-size:7px}
- .hero-feature .icon{font-size:20px}
- .hero-divider{height:25px}
- .section{width:calc(100vw - 34px);margin-bottom:75px}
- .features-grid,.games-grid,.packages{grid-template-columns:1fr}
- .game-item{height:285px}
- .footer-links{gap:20px;font-size:17px}
- .language-buttons{grid-template-columns:1fr}
- #languageSwitcher{top:10px;left:10px}
-}
+    :root {
+        --accent: #c4d600;
+        --bg: #0d0d0d;
+        --card-bg: #1a1a1a;
+        --text-main: #ffffff;
+        --text-gray: #ffffff;
+        --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+        -moz-transform-origin: top center;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        opacity: 0.05;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* ================= HERO SECTION ================= */
+
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-box {
+        width: 1400px;
+        display: block;
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        width: 580px;
+        filter: brightness(0) invert(1);
+        z-index: 10;
+    }
+
+    .hero-content {
+        margin-top: 100px;
+        max-width: 1200px;
+    }
+
+    .hero-title {
+        font-size: 120px;
+        font-weight: 900;
+        line-height: 0.99;
+        text-transform: uppercase;
+        margin-bottom: 50px;
+        letter-spacing: -3px;
+    }
+
+    .hero-title span {
+        color: var(--accent);
+    }
+
+    .hero-text {
+        font-size: 35px;
+        color: var(--text-gray);
+        max-width: 750px;
+        margin-bottom: 60px;
+        border-left: 4px solid var(--accent);
+        padding-left: 30px;
+        line-height: 1.5;
+    }
+
+    .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 28px 60px;
+        background: var(--accent);
+        color: #000;
+        text-decoration: none;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 20px;
+        transition: 0.3s;
+    }
+
+    .hero-btn:hover {
+        background: #fff;
+        transform: translateY(-5px);
+    }
+
+    /* ================= SECTIONS ================= */
+
+    .section {
+        width: 1400px;
+        margin: 0 auto 120px auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .section-header {
+        margin-bottom: 60px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .section-title {
+        font-size: 72px;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+
+    .section-title span {
+        color: var(--accent);
+    }
+
+    /* ================= GRID SYSTEM ================= */
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .card {
+        background: var(--card-bg);
+        padding: 50px;
+        border: 1px solid var(--border);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        border-color: var(--accent);
+        background: #222;
+    }
+
+    .card h3 {
+        font-size: 35px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: var(--accent);
+    }
+
+    .card p {
+        color: var(--text-gray);
+        font-size: 24px;
+    }
+
+    /* ================= GAMES GRID ================= */
+
+    .games-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .game-item {
+        height: 350px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        background: #000;
+    }
+
+    .game-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+        opacity: 0.9;
+    }
+
+    .game-item:hover img {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    .game-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    /* ================= PRICE PACKAGES ================= */
+
+    .packages {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+
+    .pack-card {
+        background: #111;
+        padding: 40px;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pack-card.active {
+        border: 2px solid var(--accent);
+    }
+
+    .pack-name {
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+
+    .pack-list {
+        list-style: none;
+        margin-bottom: 40px;
+        flex-grow: 1;
+    }
+
+    .pack-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid #222;
+        color: var(--text-gray);
+        font-size: 14px;
+    }
+
+    .pack-price {
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--accent);
+    }
+
+    /* ================= CONTACTS ================= */
+
+    .contact-footer {
+        background: var(--accent);
+        color: #000;
+        padding: 100px 60px;
+        text-align: center;
+    }
+
+    .footer-title {
+        font-size: 84px;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .footer-links a {
+        color: #000;
+        text-decoration: none;
+        border-bottom: 3px solid #000;
+    }
+
+    /* ================= LANGUAGE SELECTOR ================= */
+
+    #languageOverlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.94);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        backdrop-filter: blur(12px);
+    }
+
+    #languageOverlay.hidden {
+        display: none;
+    }
+
+    .language-modal {
+        width: min(700px, calc(100vw - 40px));
+        padding: 60px 50px;
+        background: #111;
+        border: 2px solid var(--accent);
+        text-align: center;
+        box-shadow: 0 0 60px rgba(196, 214, 0, 0.15);
+    }
+
+    .language-modal h2 {
+        font-size: 42px;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .language-modal p {
+        color: #aaa;
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
+
+    .language-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .language-button {
+        border: 1px solid #333;
+        background: #1a1a1a;
+        color: #fff;
+        padding: 22px 15px;
+        font-family: inherit;
+        font-size: 18px;
+        font-weight: 900;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    .language-button:hover {
+        background: var(--accent);
+        color: #000;
+        border-color: var(--accent);
+        transform: translateY(-3px);
+    }
+
+    #languageSwitcher {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+        z-index: 9998;
+        display: flex;
+        gap: 5px;
+        background: rgba(17, 17, 17, .94);
+        border: 1px solid rgba(255, 255, 255, .15);
+        padding: 5px;
+        backdrop-filter: blur(10px);
+    }
+
+    .lang-switch-btn {
+        border: 0;
+        background: transparent;
+        color: #aaa;
+        padding: 9px 12px;
+        font-family: inherit;
+        font-weight: 900;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .lang-switch-btn.active,
+    .lang-switch-btn:hover {
+        background: var(--accent);
+        color: #000;
+    }
+
+    @media (max-width: 700px) {
+        .language-modal {
+            padding: 40px 25px;
+        }
+
+        .language-modal h2 {
+            font-size: 30px;
+        }
+
+        .language-buttons {
+            grid-template-columns: 1fr;
+        }
+
+        #languageSwitcher {
+            top: 10px;
+            left: 10px;
+        }
+    }
 </style>
 
 </head>
 
 <body>
 
-    <!-- ================= LANGUAGE SYSTEM ================= -->
+<!-- ================= LANGUAGE SYSTEM ================= -->
 
-    <div id="languageOverlay">
-        <div class="language-modal">
-            <h2 id="languageModalTitle">Выберите язык</h2>
-            <p id="languageModalSubtitle">Выберите язык для просмотра сайта</p>
+<div id="languageOverlay">
+    <div class="language-modal">
+        <h2 id="languageModalTitle">Выберите язык</h2>
+        <p id="languageModalSubtitle">Выберите язык для просмотра сайта</p>
 
-            <div class="language-buttons">
-                <button class="language-button" data-language="ru">🇷🇺 Русский</button>
-                <button class="language-button" data-language="kk">🇰🇿 Қазақша</button>
-                <button class="language-button" data-language="en">🇬🇧 English</button>
-            </div>
+        <div class="language-buttons">
+            <button class="language-button" data-language="ru">🇷🇺 Русский</button>
+            <button class="language-button" data-language="kk">🇰🇿 Қазақша</button>
+            <button class="language-button" data-language="en">🇬🇧 English</button>
         </div>
     </div>
+</div>
 
-    <div id="languageSwitcher">
-        <button class="lang-switch-btn" data-language="ru">RU</button>
-        <button class="lang-switch-btn" data-language="kk">KZ</button>
-        <button class="lang-switch-btn" data-language="en">EN</button>
+<div id="languageSwitcher">
+    <button class="lang-switch-btn" data-language="ru">RU</button>
+    <button class="lang-switch-btn" data-language="kk">KZ</button>
+    <button class="lang-switch-btn" data-language="en">EN</button>
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+    <div class="hero-box">
+
+        <img src="img/logo.png" class="logo" alt="ELEMENT LOGO">
+
+        <div class="hero-content">
+
+            <h1 class="hero-title">
+                <span data-i18n="heroTitle1">Игры,</span><br>
+                <span data-i18n="heroTitle2">которые</span>
+                <span data-i18n="heroTitleAccent">собирают людей</span>
+            </h1>
+
+            <p class="hero-text">
+                <span data-i18n="heroText">
+                    Создаем интерактивные зоны для мероприятий любого масштаба.
+                    Интеллектуальный азарт, тактильное удовольствие и живое общение
+                    без шаблонов и компромиссов.
+                </span>
+            </p>
+
+            <div class="hero-actions">
+                <a href="#games" class="hero-btn" data-i18n="catalogButton">
+                    Смотреть каталог
+                </a>
+            </div>
+
+        </div>
     </div>
+</section>
 
 
-    
-    <!-- ================= HERO — REFERENCE STYLE ================= -->
-    <section class="hero">
-        <div class="hero-box">
+<!-- ================= PROFESSIONAL APPROACH ================= -->
 
-            <img src="img/logo.png" class="logo" alt="ELEMENT LOGO">
+<section class="section">
 
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span data-i18n="heroTitle1">Игры,</span>
-                    <span data-i18n="heroTitle2">которые</span>
-                    <span data-i18n="heroTitleAccent">собирают людей</span>
-                </h1>
-
-                <p class="hero-text">
-                    <span data-i18n="heroText">
-                        Создаем интерактивные зоны для мероприятий любого масштаба.
-                        Интеллектуальный азарт, тактильное удовольствие и живое общение
-                        без шаблонов и компромиссов.
-                    </span>
-                </p>
-            </div>
-
-            <div class="hero-visual">
-                <img src="img/games/jenga.jpg" class="hero-game" alt="Дженга" data-i18n-alt="gameJenga">
-                <div class="hero-note">КЛАССИКА<br>В НОВОМ<br>ФОРМАТЕ</div>
-            </div>
-
-            <div class="hero-bottom">
-                <div class="hero-feature">
-                    <span class="icon">♧</span>
-                    <span>ДЛЯ КОМПАНИЙ<br>И КОРПОРАТИВОВ</span>
-                </div>
-                <span class="hero-divider"></span>
-                <div class="hero-feature">
-                    <span class="icon">☆</span>
-                    <span>ДЛЯ ЧАСТНЫХ<br>МЕРОПРИЯТИЙ</span>
-                </div>
-                <span class="hero-divider"></span>
-                <div class="hero-feature">
-                    <span class="icon">ϟ</span>
-                    <span>ПОД КЛЮЧ<br>И ПОД ВАШ ФОРМАТ</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ================= PROFESSIONAL APPROACH ================= -->
-
-
-    <section class="section">
-
-        <div class="section-header">
-            <h2 class="section-title">
-                <span data-i18n="professionalTitle">Профессиональный</span>
-                <span data-i18n="approach">подход</span>
-            </h2>
-        </div>
-
-        <div class="features-grid">
-
-            <div class="card">
-                <h3 data-i18n="atmosphere">Атмосфера</h3>
-                <p data-i18n="atmosphereText">
-                    Мы превращаем обычное пространство в точку притяжения,
-                    где гости начинают общаться без сценария.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3 data-i18n="coordination">Координация</h3>
-                <p data-i18n="coordinationText">
-                    Наши мастера не просто стоят рядом — они вовлекают гостей,
-                    объясняют механику и поддерживают драйв.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3 data-i18n="quality">Качество</h3>
-                <p data-i18n="qualityText">
-                    Используем только натуральные материалы: дерево, металл, кожу.
-                    Каждая игра — это арт-объект.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- ================= GAMES ================= -->
-
-    <section class="section" id="games">
-
-        <div class="section-header">
-            <h2 class="section-title">
-                <span data-i18n="catalog">Каталог</span>
-                <span data-i18n="games">игр</span>
-            </h2>
-        </div>
-
-        <div class="games-grid">
-
-            <!-- 1. JENGA -->
-
-            <a href="game/jenga.html" class="game-item">
-                <img
-                    src="img/games/jenga.jpg"
-                    data-i18n-alt="gameJenga"
-                    alt="Дженга"
-                >
-                <div class="game-caption" data-i18n="gameJenga">
-                    Дженга
-                </div>
-            </a>
-
-
-            <!-- 2. 4 IN ROW -->
-
-            <a href="game/4inrow.html" class="game-item">
-                <img
-                    src="img/games/4inrow.jpg"
-                    data-i18n-alt="game4inrow"
-                    alt="4 в ряд"
-                >
-                <div class="game-caption" data-i18n="game4inrow">
-                    4 в ряд
-                </div>
-            </a>
-
-
-            <!-- 3. NA SHARU -->
-
-            <a href="game/nasharu.html" class="game-item">
-                <img
-                    src="img/games/nasharu.jpg"
-                    data-i18n-alt="gameNasharu"
-                    alt="На шару"
-                >
-                <div class="game-caption" data-i18n="gameNasharu">
-                    На шару
-                </div>
-            </a>
-
-
-            <!-- 4. VOSKHOD -->
-
-            <a href="game/voshod.html" class="game-item">
-                <img
-                    src="img/games/voshod.jpg"
-                    data-i18n-alt="gameVoshod"
-                    alt="Восход"
-                >
-                <div class="game-caption" data-i18n="gameVoshod">
-                    Восход
-                </div>
-            </a>
-
-
-            <!-- 5. MAGNETIC FIELD -->
-
-            <a href="game/magnetic.html" class="game-item">
-                <img
-                    src="img/games/magnetic.jpg"
-                    data-i18n-alt="gameMagnetic"
-                    alt="Магнитное поле"
-                >
-                <div class="game-caption" data-i18n="gameMagnetic">
-                    Магнитное поле
-                </div>
-            </a>
-
-
-            <!-- 6. KALBUTTO -->
-
-            <a href="game/kalbutto.html" class="game-item">
-                <img
-                    src="img/games/kalbutto.jpg"
-                    data-i18n-alt="gameKalbutto"
-                    alt="Кальбутто"
-                >
-                <div class="game-caption" data-i18n="gameKalbutto">
-                    Кальбутто
-                </div>
-            </a>
-
-
-            <!-- 7. CORNHOLE -->
-
-            <a href="game/kornhol.html" class="game-item">
-                <img
-                    src="img/games/kornhol.jpg"
-                    data-i18n-alt="gameCornhole"
-                    alt="Корнхолл"
-                >
-                <div class="game-caption" data-i18n="gameCornhole">
-                    Корнхолл
-                </div>
-            </a>
-
-
-            <!-- 8. KOROMYSLO -->
-
-            <a href="game/koromyslo.html" class="game-item">
-                <img
-                    src="img/games/koromyslo.jpg"
-                    data-i18n-alt="gameKoromyslo"
-                    alt="Коромысло"
-                >
-                <div class="game-caption" data-i18n="gameKoromyslo">
-                    Коромысло
-                </div>
-            </a>
-
-
-            <!-- 9. ZIGZAG -->
-
-            <a href="game/zigzag.html" class="game-item">
-                <img
-                    src="img/games/zigzag.jpg"
-                    data-i18n-alt="gameZigzag"
-                    alt="Зигзаг"
-                >
-                <div class="game-caption" data-i18n="gameZigzag">
-                    Зигзаг
-                </div>
-            </a>
-
-
-            <!-- 10. SEA BATTLE -->
-
-            <a href="game/sea-battle.html" class="game-item">
-                <img
-                    src="img/games/sea-battle.jpg"
-                    data-i18n-alt="gameSeaBattle"
-                    alt="Морской бой"
-                >
-                <div class="game-caption" data-i18n="gameSeaBattle">
-                    Морской бой
-                </div>
-            </a>
-
-
-            <!-- 11. ELASTIC -->
-
-            <a href="game/elastik.html" class="game-item">
-                <img
-                    src="img/games/elastik.jpg"
-                    data-i18n-alt="gameElastic"
-                    alt="Эластик"
-                >
-                <div class="game-caption" data-i18n="gameElastic">
-                    Эластик
-                </div>
-            </a>
-
-
-            <!-- 12. RAILS -->
-
-            <a href="game/rails.html" class="game-item">
-                <img
-                    src="img/games/rails.jpg"
-                    data-i18n-alt="gameRails"
-                    alt="Рельсы"
-                >
-                <div class="game-caption" data-i18n="gameRails">
-                    Рельсы
-                </div>
-            </a>
-
-
-            <!-- 13. RINGOS / NA KRYUCHKE -->
-
-            <a href="game/ringos.html" class="game-item">
-                <img
-                    src="img/games/ringos.jpg"
-                    data-i18n-alt="gameRingos"
-                    alt="На крючке"
-                >
-                <div class="game-caption" data-i18n="gameRingos">
-                    На крючке
-                </div>
-            </a>
-
-
-            <!-- 14. TOKATRON -->
-
-            <a href="game/tokatron.html" class="game-item">
-                <img
-                    src="img/games/tokatron.jpg"
-                    data-i18n-alt="gameTokatron"
-                    alt="Токатронь"
-                >
-                <div class="game-caption" data-i18n="gameTokatron">
-                    Токатронь
-                </div>
-            </a>
-
-
-            <!-- 15. BEER PONG -->
-
-
-
-        </div>
-    </section>
-
-
-    <!-- ================= PACKAGES ================= -->
-
-    <section class="section">
-
-        <div class="section-header">
-            <h2 class="section-title">
-                <span data-i18n="formats">Форматы</span>
-                <span data-i18n="participation">участия</span>
-            </h2>
-        </div>
-
-        <div class="packages" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 40px;">
-
-            <!-- LIGHT -->
-
-            <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
-
-                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
-                    LIGHT
-                </div>
-
-                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="lightGames">4 игры на выбор</span>
-                    </li>
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="oneGameMaster">1 игротехника</span>
-                    </li>
-
-                </ul>
-
-                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="twoHours">
-                            2 часа
-                        </span>
-
-                        <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
-                            75 000 ₸
-                        </span>
-                    </div>
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="fiveHours">
-                            5 часов
-                        </span>
-
-                        <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
-                            135 000 ₸
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- STANDARD -->
-
-            <div class="pack-card active" style="background: #111; padding: 40px; border: 2px solid var(--accent); display: flex; flex-direction: column;">
-
-                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
-                    STANDARD
-                </div>
-
-                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="standardGames">8 игр на выбор</span>
-                    </li>
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="twoGameMasters">2 игротехника</span>
-                    </li>
-
-                </ul>
-
-                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="twoHours">
-                            2 часа
-                        </span>
-
-                        <span class="price-value" style="font-size: 25px; font-weight: 900; color: #fff;">
-                            135 000 ₸
-                        </span>
-                    </div>
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="fiveHours">
-                            5 часов
-                        </span>
-
-                        <span class="price-value" style="font-size: 25px; font-weight: 900; color: #fff;">
-                            190 000 ₸
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- MAXIMUM -->
-
-            <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
-
-                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
-                    MAXIMUM
-                </div>
-
-                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="maximumGames">14 игр в зоне</span>
-                    </li>
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="fourGameMasters">4 игротехника</span>
-                    </li>
-
-                </ul>
-
-                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="twoHours">
-                            2 часа
-                        </span>
-
-                        <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
-                            235 000 ₸
-                        </span>
-                    </div>
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="fiveHours">
-                            5 часов
-                        </span>
-
-                        <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
-                            290 000 ₸
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- CUSTOM -->
-
-            <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
-
-                <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
-                    CUSTOM
-                </div>
-
-                <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
-                        <span data-i18n="customSet">Индивидуальный набор</span>
-                    </li>
-
-                    <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;"></li>
-
-                </ul>
-
-                <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
-
-                    <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
-
-                        <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="anyTime">
-                            Любое время
-                        </span>
-
-                        <span class="price-custom-val" style="font-size: 25px; font-weight: 900; color: var(--accent); text-transform: uppercase;" data-i18n="onRequest">
-                            По запросу
-                        </span>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- PACKAGE NOTE -->
-
-        <div class="packages-note" style="font-size: 30px; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid var(--accent); padding-left: 15px; margin-top: 30px; font-weight: 700;">
-
-            <span data-i18n="packageNote">
-                В стоимость каждого пакета включены: доставка, монтаж, демонтаж и работа профессиональных координаторов.
-                Доставка вне города рассчитывается индивидуально.
-            </span>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="contact-footer" id="contact">
-
-        <h2 class="footer-title" data-i18n="ready">
-            Готовы начать?
+    <div class="section-header">
+        <h2 class="section-title">
+            <span data-i18n="professionalTitle">Профессиональный</span>
+            <span data-i18n="approach">подход</span>
         </h2>
+    </div>
 
-        <div class="footer-links">
+    <div class="features-grid">
 
-            <a href="tel:+77028966596">
-                +7 (706) 695 33 97
-            </a>
-
-            <a href="https://wa.me/77066953397?text=Здравствуйте!%20Хочу%20оформить%20заказ.">
-                WhatsApp
-            </a>
-
-            <a href="https://www.instagram.com/event_element/">
-                Instagram
-            </a>
-
+        <div class="card">
+            <h3 data-i18n="atmosphere">Атмосфера</h3>
+            <p data-i18n="atmosphereText">
+                Мы превращаем обычное пространство в точку притяжения,
+                где гости начинают общаться без сценария.
+            </p>
         </div>
 
-    </footer>
+        <div class="card">
+            <h3 data-i18n="coordination">Координация</h3>
+            <p data-i18n="coordinationText">
+                Наши мастера не просто стоят рядом — они вовлекают гостей,
+                объясняют механику и поддерживают драйв.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 data-i18n="quality">Качество</h3>
+            <p data-i18n="qualityText">
+                Используем только натуральные материалы: дерево, металл, кожу.
+                Каждая игра — это арт-объект.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= GAMES ================= -->
+
+<section class="section" id="games">
+
+    <div class="section-header">
+        <h2 class="section-title">
+            <span data-i18n="catalog">Каталог</span>
+            <span data-i18n="games">игр</span>
+        </h2>
+    </div>
+
+    <div class="games-grid">
+
+        <!-- 1. JENGA -->
+
+        <a href="game/jenga.html" class="game-item">
+            <img
+                src="img/games/jenga.jpg"
+                data-i18n-alt="gameJenga"
+                alt="Дженга"
+            >
+            <div class="game-caption" data-i18n="gameJenga">
+                Дженга
+            </div>
+        </a>
+
+
+        <!-- 2. 4 IN ROW -->
+
+        <a href="game/4inrow.html" class="game-item">
+            <img
+                src="img/games/4inrow.jpg"
+                data-i18n-alt="game4inrow"
+                alt="4 в ряд"
+            >
+            <div class="game-caption" data-i18n="game4inrow">
+                4 в ряд
+            </div>
+        </a>
+
+
+        <!-- 3. NA SHARU -->
+
+        <a href="game/nasharu.html" class="game-item">
+            <img
+                src="img/games/nasharu.jpg"
+                data-i18n-alt="gameNasharu"
+                alt="На шару"
+            >
+            <div class="game-caption" data-i18n="gameNasharu">
+                На шару
+            </div>
+        </a>
+
+
+        <!-- 4. VOSKHOD -->
+
+        <a href="game/voshod.html" class="game-item">
+            <img
+                src="img/games/voshod.jpg"
+                data-i18n-alt="gameVoshod"
+                alt="Восход"
+            >
+            <div class="game-caption" data-i18n="gameVoshod">
+                Восход
+            </div>
+        </a>
+
+
+        <!-- 5. MAGNETIC FIELD -->
+
+        <a href="game/magnetic.html" class="game-item">
+            <img
+                src="img/games/magnetic.jpg"
+                data-i18n-alt="gameMagnetic"
+                alt="Магнитное поле"
+            >
+            <div class="game-caption" data-i18n="gameMagnetic">
+                Магнитное поле
+            </div>
+        </a>
+
+
+        <!-- 6. KALBUTTO -->
+
+        <a href="game/kalbutto.html" class="game-item">
+            <img
+                src="img/games/kalbutto.jpg"
+                data-i18n-alt="gameKalbutto"
+                alt="Кальбутто"
+            >
+            <div class="game-caption" data-i18n="gameKalbutto">
+                Кальбутто
+            </div>
+        </a>
+
+
+        <!-- 7. CORNHOLE -->
+
+        <a href="game/kornhol.html" class="game-item">
+            <img
+                src="img/games/kornhol.jpg"
+                data-i18n-alt="gameCornhole"
+                alt="Корнхолл"
+            >
+            <div class="game-caption" data-i18n="gameCornhole">
+                Корнхолл
+            </div>
+        </a>
+
+
+        <!-- 8. KOROMYSLO -->
+
+        <a href="game/koromyslo.html" class="game-item">
+            <img
+                src="img/games/koromyslo.jpg"
+                data-i18n-alt="gameKoromyslo"
+                alt="Коромысло"
+            >
+            <div class="game-caption" data-i18n="gameKoromyslo">
+                Коромысло
+            </div>
+        </a>
 
 
-    <!-- ================= MULTILINGUAL SYSTEM ================= -->
+        <!-- 9. ZIGZAG -->
+
+        <a href="game/zigzag.html" class="game-item">
+            <img
+                src="img/games/zigzag.jpg"
+                data-i18n-alt="gameZigzag"
+                alt="Зигзаг"
+            >
+            <div class="game-caption" data-i18n="gameZigzag">
+                Зигзаг
+            </div>
+        </a>
 
-    <script>
 
-        /*
-         * ELEMENT Craft Games — multilingual system
-         *
-         * Shared language key:
-         * element_language
-         *
-         * The selected language is saved in localStorage
-         * and can be used on other pages of the website.
-         */
+        <!-- 10. SEA BATTLE -->
 
-        const ELEMENT_LANGUAGE_KEY = 'element_language';
+        <a href="game/sea-battle.html" class="game-item">
+            <img
+                src="img/games/sea-battle.jpg"
+                data-i18n-alt="gameSeaBattle"
+                alt="Морской бой"
+            >
+            <div class="game-caption" data-i18n="gameSeaBattle">
+                Морской бой
+            </div>
+        </a>
 
 
-        const translations = {
+        <!-- 11. ELASTIC -->
 
-            /* =====================================================
-               RUSSIAN
-            ===================================================== */
+        <a href="game/elastik.html" class="game-item">
+            <img
+                src="img/games/elastik.jpg"
+                data-i18n-alt="gameElastic"
+                alt="Эластик"
+            >
+            <div class="game-caption" data-i18n="gameElastic">
+                Эластик
+            </div>
+        </a>
 
-            ru: {
 
-                pageTitle: 'ELEMENT Craft Games | Премиальные игровые зоны',
+        <!-- 12. RAILS -->
 
-                heroTitle1: 'Игры,',
-                heroTitle2: 'которые',
-                heroTitleAccent: 'собирают людей',
+        <a href="game/rails.html" class="game-item">
+            <img
+                src="img/games/rails.jpg"
+                data-i18n-alt="gameRails"
+                alt="Рельсы"
+            >
+            <div class="game-caption" data-i18n="gameRails">
+                Рельсы
+            </div>
+        </a>
 
-                heroText:
-                    'Создаем интерактивные зоны для мероприятий любого масштаба. Интеллектуальный азарт, тактильное удовольствие и живое общение без шаблонов и компромиссов.',
 
-                catalogButton: 'Смотреть каталог',
+        <!-- 13. RINGOS / NA KRYUCHKE -->
 
-                professionalTitle: 'Профессиональный',
-                approach: 'подход',
+        <a href="game/ringos.html" class="game-item">
+            <img
+                src="img/games/ringos.jpg"
+                data-i18n-alt="gameRingos"
+                alt="На крючке"
+            >
+            <div class="game-caption" data-i18n="gameRingos">
+                На крючке
+            </div>
+        </a>
 
-                atmosphere: 'Атмосфера',
 
-                atmosphereText:
-                    'Мы превращаем обычное пространство в точку притяжения, где гости начинают общаться без сценария.',
+        <!-- 14. TOKATRON -->
 
-                coordination: 'Координация',
+        <a href="game/tokatron.html" class="game-item">
+            <img
+                src="img/games/tokatron.jpg"
+                data-i18n-alt="gameTokatron"
+                alt="Токатронь"
+            >
+            <div class="game-caption" data-i18n="gameTokatron">
+                Токатронь
+            </div>
+        </a>
 
-                coordinationText:
-                    'Наши мастера не просто стоят рядом — они вовлекают гостей, объясняют механику и поддерживают драйв.',
 
-                quality: 'Качество',
+        <!-- 15. BEER PONG -->
 
-                qualityText:
-                    'Используем только натуральные материалы: дерево, металл, кожу. Каждая игра — это арт-объект.',
 
-                catalog: 'Каталог',
-                games: 'игр',
 
-                /* GAMES */
+    </div>
+</section>
 
-                gameJenga: 'Дженга',
-                game4inrow: '4 в ряд',
-                gameNasharu: 'На шару',
-                gameVoshod: 'Восход',
-                gameMagnetic: 'Магнитное поле',
-                gameKalbutto: 'Кальбутто',
-                gameCornhole: 'Корнхолл',
-                gameKoromyslo: 'Коромысло',
-                gameZigzag: 'Зигзаг',
-                gameSeaBattle: 'Морской бой',
-                gameElastic: 'Эластик',
-                gameRails: 'Рельсы',
-                gameRingos: 'На крючке',
-                gameTokatron: 'Токатронь',
-                gameBeerPong: 'Бирпонг',
 
-                /* PACKAGES */
+<!-- ================= PACKAGES ================= -->
 
-                formats: 'Форматы',
-                participation: 'участия',
+<section class="section">
 
-                lightGames: '4 игры на выбор',
-                oneGameMaster: '1 игротехника',
+    <div class="section-header">
+        <h2 class="section-title">
+            <span data-i18n="formats">Форматы</span>
+            <span data-i18n="participation">участия</span>
+        </h2>
+    </div>
 
-                standardGames: '8 игр на выбор',
-                twoGameMasters: '2 игротехника',
+    <div class="packages" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 40px;">
 
-                maximumGames: '14 игр в зоне',
-                fourGameMasters: '4 игротехника',
+        <!-- LIGHT -->
 
-                customSet: 'Индивидуальный набор',
+        <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
 
-                twoHours: '2 часа',
-                fiveHours: '5 часов',
+            <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
+                LIGHT
+            </div>
 
-                anyTime: 'Любое время',
-                onRequest: 'По запросу',
+            <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
 
-                packageNote:
-                    'В стоимость каждого пакета включены: доставка, монтаж, демонтаж и работа профессиональных координаторов. Доставка вне города рассчитывается индивидуально.',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="lightGames">4 игры на выбор</span>
+                </li>
 
-                ready: 'Готовы начать?',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="oneGameMaster">1 игротехника</span>
+                </li>
 
-                languageTitle: 'Выберите язык',
-                languageSubtitle: 'Выберите язык для просмотра сайта'
-            },
+            </ul>
 
+            <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
 
-            /* =====================================================
-               KAZAKH
-            ===================================================== */
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="twoHours">
+                        2 часа
+                    </span>
 
-            kk: {
+                    <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
+                        75 000 ₸
+                    </span>
+                </div>
 
-                pageTitle: 'ELEMENT Craft Games | Премиум ойын аймақтары',
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="fiveHours">
+                        5 часов
+                    </span>
 
-                heroTitle1: 'Адамдарды',
-                heroTitle2: 'біріктіретін',
-                heroTitleAccent: 'ойындар',
+                    <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
+                        135 000 ₸
+                    </span>
+                </div>
 
-                heroText:
-                    'Кез келген ауқымдағы іс-шараларға арналған интерактивті ойын аймақтарын жасаймыз. Зияткерлік бәсеке, тактильді әсер және шаблондарсыз жанды қарым-қатынас.',
+            </div>
+        </div>
 
-                catalogButton: 'Каталогты көру',
 
-                professionalTitle: 'Кәсіби',
-                approach: 'тәсіл',
+        <!-- STANDARD -->
 
-                atmosphere: 'Атмосфера',
+        <div class="pack-card active" style="background: #111; padding: 40px; border: 2px solid var(--accent); display: flex; flex-direction: column;">
 
-                atmosphereText:
-                    'Біз қарапайым кеңістікті қонақтар сценарийсіз-ақ араласа бастайтын тартымды орынға айналдырамыз.',
+            <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
+                STANDARD
+            </div>
 
-                coordination: 'Үйлестіру',
+            <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
 
-                coordinationText:
-                    'Біздің мамандар жай ғана қасында тұрмайды — олар қонақтарды ойынға тартып, ережелерін түсіндіріп, көңіл-күйді қолдайды.',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="standardGames">8 игр на выбор</span>
+                </li>
 
-                quality: 'Сапа',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="twoGameMasters">2 игротехника</span>
+                </li>
 
-                qualityText:
-                    'Тек табиғи материалдарды қолданамыз: ағаш, металл, былғары. Әр ойын — өнер нысаны.',
+            </ul>
 
-                catalog: 'Ойындар',
-                games: 'каталогы',
+            <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
 
-                /* GAMES */
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="twoHours">
+                        2 часа
+                    </span>
 
-                gameJenga: 'Дженга',
-                game4inrow: '4 қатарынан',
-                gameNasharu: 'Кезекпен',
-                gameVoshod: 'Шығыс',
-                gameMagnetic: 'Магнит өрісі',
-                gameKalbutto: 'Кальбутто',
-                gameCornhole: 'Корнхолл',
-                gameKoromyslo: 'Коромысло',
-                gameZigzag: 'Зигзаг',
-                gameSeaBattle: 'Теңіз шайқасы',
-                gameElastic: 'Эластик',
-                gameRails: 'Рельстер',
-                gameRingos: 'Ілмекте',
-                gameTokatron: 'Токатронь',
-                gameBeerPong: 'Бирпонг',
+                    <span class="price-value" style="font-size: 25px; font-weight: 900; color: #fff;">
+                        135 000 ₸
+                    </span>
+                </div>
 
-                /* PACKAGES */
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="fiveHours">
+                        5 часов
+                    </span>
 
-                formats: 'Қатысу',
-                participation: 'форматтары',
+                    <span class="price-value" style="font-size: 25px; font-weight: 900; color: #fff;">
+                        190 000 ₸
+                    </span>
+                </div>
 
-                lightGames: 'Таңдау бойынша 4 ойын',
-                oneGameMaster: '1 ойын шебері',
+            </div>
+        </div>
 
-                standardGames: 'Таңдау бойынша 8 ойын',
-                twoGameMasters: '2 ойын шебері',
 
-                maximumGames: 'Аймақта 14 ойын',
-                fourGameMasters: '4 ойын шебері',
+        <!-- MAXIMUM -->
 
-                customSet: 'Жеке жинақ',
+        <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
 
-                twoHours: '2 сағат',
-                fiveHours: '5 сағат',
+            <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
+                MAXIMUM
+            </div>
 
-                anyTime: 'Кез келген уақыт',
-                onRequest: 'Сұраныс бойынша',
+            <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
 
-                packageNote:
-                    'Әр пакет бағасына жеткізу, монтаж, демонтаж және кәсіби үйлестірушілердің жұмысы кіреді. Қала сыртындағы жеткізу жеке есептеледі.',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="maximumGames">14 игр в зоне</span>
+                </li>
 
-                ready: 'Бастауға дайынсыз ба?',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="fourGameMasters">4 игротехника</span>
+                </li>
 
-                languageTitle: 'Тілді таңдаңыз',
-                languageSubtitle: 'Сайтты көру үшін тілді таңдаңыз'
-            },
+            </ul>
 
+            <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
 
-            /* =====================================================
-               ENGLISH
-            ===================================================== */
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="twoHours">
+                        2 часа
+                    </span>
 
-            en: {
+                    <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
+                        235 000 ₸
+                    </span>
+                </div>
 
-                pageTitle: 'ELEMENT Craft Games | Premium Game Zones',
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="fiveHours">
+                        5 часов
+                    </span>
 
-                heroTitle1: 'Games',
-                heroTitle2: 'that',
-                heroTitleAccent: 'bring people together',
+                    <span class="price-value" style="font-size: 25px; font-weight: 900; color: var(--accent);">
+                        290 000 ₸
+                    </span>
+                </div>
 
-                heroText:
-                    'We create interactive zones for events of any scale. Intellectual excitement, tactile experience and live communication without templates or compromises.',
+            </div>
+        </div>
 
-                catalogButton: 'View catalog',
 
-                professionalTitle: 'Professional',
-                approach: 'approach',
+        <!-- CUSTOM -->
 
-                atmosphere: 'Atmosphere',
+        <div class="pack-card" style="background: #111; padding: 40px; border: 1px solid var(--border); display: flex; flex-direction: column;">
 
-                atmosphereText:
-                    'We turn an ordinary space into a point of attraction where guests start communicating naturally, without a script.',
+            <div class="pack-name" style="font-size: 28px; font-weight: 900; margin-bottom: 25px;">
+                CUSTOM
+            </div>
 
-                coordination: 'Coordination',
+            <ul class="pack-list" style="list-style: none; margin-bottom: 30px; flex-grow: 1;">
 
-                coordinationText:
-                    'Our game masters do more than stand nearby — they engage guests, explain the mechanics and keep the energy going.',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;">
+                    <span data-i18n="customSet">Индивидуальный набор</span>
+                </li>
 
-                quality: 'Quality',
+                <li style="padding: 10px 0; border-bottom: 1px solid #222; color: var(--text-gray); font-size: 24px;"></li>
 
-                qualityText:
-                    'We use only natural materials: wood, metal and leather. Every game is an art object.',
+            </ul>
 
-                catalog: 'Game',
-                games: 'catalog',
+            <div class="pack-prices-block" style="border-top: 1px solid var(--border); padding-top: 15px;">
 
-                /* GAMES */
+                <div class="price-row" style="display: flex; justify-content: space-between; align-items: center;">
 
-                gameJenga: 'Jenga',
-                game4inrow: 'Four in a Row',
-                gameNasharu: 'Na Sharu',
-                gameVoshod: 'Sunrise',
-                gameMagnetic: 'Magnetic Field',
-                gameKalbutto: 'Kalbutto',
-                gameCornhole: 'Cornhole',
-                gameKoromyslo: 'Balance Beam',
-                gameZigzag: 'Zigzag',
-                gameSeaBattle: 'Sea Battle',
-                gameElastic: 'Elastic',
-                gameRails: 'Rails',
-                gameRingos: 'On the Hook',
-                gameTokatron: 'Tokatron',
-                gameBeerPong: 'Beer Pong',
+                    <span class="price-time" style="font-size: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase;" data-i18n="anyTime">
+                        Любое время
+                    </span>
 
-                /* PACKAGES */
+                    <span class="price-custom-val" style="font-size: 25px; font-weight: 900; color: var(--accent); text-transform: uppercase;" data-i18n="onRequest">
+                        По запросу
+                    </span>
 
-                formats: 'Participation',
-                participation: 'formats',
+                </div>
 
-                lightGames: '4 games to choose from',
-                oneGameMaster: '1 game master',
+            </div>
+        </div>
 
-                standardGames: '8 games to choose from',
-                twoGameMasters: '2 game masters',
+    </div>
 
-                maximumGames: '14 games in the zone',
-                fourGameMasters: '4 game masters',
 
-                customSet: 'Custom set',
+    <!-- PACKAGE NOTE -->
 
-                twoHours: '2 hours',
-                fiveHours: '5 hours',
+    <div class="packages-note" style="font-size: 30px; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid var(--accent); padding-left: 15px; margin-top: 30px; font-weight: 700;">
 
-                anyTime: 'Any time',
-                onRequest: 'On request',
+        <span data-i18n="packageNote">
+            В стоимость каждого пакета включены: доставка, монтаж, демонтаж и работа профессиональных координаторов.
+            Доставка вне города рассчитывается индивидуально.
+        </span>
 
-                packageNote:
-                    'Every package includes delivery, setup, dismantling and professional coordinators. Delivery outside the city is calculated individually.',
+    </div>
 
-                ready: 'Ready to start?',
+</section>
 
-                languageTitle: 'Choose your language',
-                languageSubtitle: 'Choose a language to view the website'
-            }
-        };
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="contact-footer" id="contact">
+
+    <h2 class="footer-title" data-i18n="ready">
+        Готовы начать?
+    </h2>
+
+    <div class="footer-links">
+
+        <a href="tel:+77028966596">
+            +7 (706) 695 33 97
+        </a>
+
+        <a href="https://wa.me/77066953397?text=Здравствуйте!%20Хочу%20оформить%20заказ.">
+            WhatsApp
+        </a>
+
+        <a href="https://www.instagram.com/event_element/">
+            Instagram
+        </a>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= MULTILINGUAL SYSTEM ================= -->
+
+<script>
+
+    /*
+     * ELEMENT Craft Games — multilingual system
+     *
+     * Shared language key:
+     * element_language
+     *
+     * The selected language is saved in localStorage
+     * and can be used on other pages of the website.
+     */
+
+    const ELEMENT_LANGUAGE_KEY = 'element_language';
+
+
+    const translations = {
+
+        /* =====================================================
+           RUSSIAN
+        ===================================================== */
+
+        ru: {
+
+            pageTitle: 'ELEMENT Craft Games | Премиальные игровые зоны',
+
+            heroTitle1: 'Игры,',
+            heroTitle2: 'которые',
+            heroTitleAccent: 'собирают людей',
+
+            heroText:
+                'Создаем интерактивные зоны для мероприятий любого масштаба. Интеллектуальный азарт, тактильное удовольствие и живое общение без шаблонов и компромиссов.',
+
+            catalogButton: 'Смотреть каталог',
+
+            professionalTitle: 'Профессиональный',
+            approach: 'подход',
+
+            atmosphere: 'Атмосфера',
+
+            atmosphereText:
+                'Мы превращаем обычное пространство в точку притяжения, где гости начинают общаться без сценария.',
+
+            coordination: 'Координация',
+
+            coordinationText:
+                'Наши мастера не просто стоят рядом — они вовлекают гостей, объясняют механику и поддерживают драйв.',
+
+            quality: 'Качество',
+
+            qualityText:
+                'Используем только натуральные материалы: дерево, металл, кожу. Каждая игра — это арт-объект.',
+
+            catalog: 'Каталог',
+            games: 'игр',
+
+            /* GAMES */
+
+            gameJenga: 'Дженга',
+            game4inrow: '4 в ряд',
+            gameNasharu: 'На шару',
+            gameVoshod: 'Восход',
+            gameMagnetic: 'Магнитное поле',
+            gameKalbutto: 'Кальбутто',
+            gameCornhole: 'Корнхолл',
+            gameKoromyslo: 'Коромысло',
+            gameZigzag: 'Зигзаг',
+            gameSeaBattle: 'Морской бой',
+            gameElastic: 'Эластик',
+            gameRails: 'Рельсы',
+            gameRingos: 'На крючке',
+            gameTokatron: 'Токатронь',
+            gameBeerPong: 'Бирпонг',
+
+            /* PACKAGES */
+
+            formats: 'Форматы',
+            participation: 'участия',
+
+            lightGames: '4 игры на выбор',
+            oneGameMaster: '1 игротехника',
+
+            standardGames: '8 игр на выбор',
+            twoGameMasters: '2 игротехника',
+
+            maximumGames: '14 игр в зоне',
+            fourGameMasters: '4 игротехника',
+
+            customSet: 'Индивидуальный набор',
+
+            twoHours: '2 часа',
+            fiveHours: '5 часов',
+
+            anyTime: 'Любое время',
+            onRequest: 'По запросу',
+
+            packageNote:
+                'В стоимость каждого пакета включены: доставка, монтаж, демонтаж и работа профессиональных координаторов. Доставка вне города рассчитывается индивидуально.',
+
+            ready: 'Готовы начать?',
+
+            languageTitle: 'Выберите язык',
+            languageSubtitle: 'Выберите язык для просмотра сайта'
+        },
 
 
         /* =====================================================
-           GET CURRENT LANGUAGE
+           KAZAKH
         ===================================================== */
 
-        function getCurrentLanguage() {
-            return localStorage.getItem(ELEMENT_LANGUAGE_KEY);
+        kk: {
+
+            pageTitle: 'ELEMENT Craft Games | Премиум ойын аймақтары',
+
+            heroTitle1: 'Адамдарды',
+            heroTitle2: 'біріктіретін',
+            heroTitleAccent: 'ойындар',
+
+            heroText:
+                'Кез келген ауқымдағы іс-шараларға арналған интерактивті ойын аймақтарын жасаймыз. Зияткерлік бәсеке, тактильді әсер және шаблондарсыз жанды қарым-қатынас.',
+
+            catalogButton: 'Каталогты көру',
+
+            professionalTitle: 'Кәсіби',
+            approach: 'тәсіл',
+
+            atmosphere: 'Атмосфера',
+
+            atmosphereText:
+                'Біз қарапайым кеңістікті қонақтар сценарийсіз-ақ араласа бастайтын тартымды орынға айналдырамыз.',
+
+            coordination: 'Үйлестіру',
+
+            coordinationText:
+                'Біздің мамандар жай ғана қасында тұрмайды — олар қонақтарды ойынға тартып, ережелерін түсіндіріп, көңіл-күйді қолдайды.',
+
+            quality: 'Сапа',
+
+            qualityText:
+                'Тек табиғи материалдарды қолданамыз: ағаш, металл, былғары. Әр ойын — өнер нысаны.',
+
+            catalog: 'Ойындар',
+            games: 'каталогы',
+
+            /* GAMES */
+
+            gameJenga: 'Дженга',
+            game4inrow: '4 қатарынан',
+            gameNasharu: 'Кезекпен',
+            gameVoshod: 'Шығыс',
+            gameMagnetic: 'Магнит өрісі',
+            gameKalbutto: 'Кальбутто',
+            gameCornhole: 'Корнхолл',
+            gameKoromyslo: 'Коромысло',
+            gameZigzag: 'Зигзаг',
+            gameSeaBattle: 'Теңіз шайқасы',
+            gameElastic: 'Эластик',
+            gameRails: 'Рельстер',
+            gameRingos: 'Ілмекте',
+            gameTokatron: 'Токатронь',
+            gameBeerPong: 'Бирпонг',
+
+            /* PACKAGES */
+
+            formats: 'Қатысу',
+            participation: 'форматтары',
+
+            lightGames: 'Таңдау бойынша 4 ойын',
+            oneGameMaster: '1 ойын шебері',
+
+            standardGames: 'Таңдау бойынша 8 ойын',
+            twoGameMasters: '2 ойын шебері',
+
+            maximumGames: 'Аймақта 14 ойын',
+            fourGameMasters: '4 ойын шебері',
+
+            customSet: 'Жеке жинақ',
+
+            twoHours: '2 сағат',
+            fiveHours: '5 сағат',
+
+            anyTime: 'Кез келген уақыт',
+            onRequest: 'Сұраныс бойынша',
+
+            packageNote:
+                'Әр пакет бағасына жеткізу, монтаж, демонтаж және кәсіби үйлестірушілердің жұмысы кіреді. Қала сыртындағы жеткізу жеке есептеледі.',
+
+            ready: 'Бастауға дайынсыз ба?',
+
+            languageTitle: 'Тілді таңдаңыз',
+            languageSubtitle: 'Сайтты көру үшін тілді таңдаңыз'
+        },
+
+
+        /* =====================================================
+           ENGLISH
+        ===================================================== */
+
+        en: {
+
+            pageTitle: 'ELEMENT Craft Games | Premium Game Zones',
+
+            heroTitle1: 'Games',
+            heroTitle2: 'that',
+            heroTitleAccent: 'bring people together',
+
+            heroText:
+                'We create interactive zones for events of any scale. Intellectual excitement, tactile experience and live communication without templates or compromises.',
+
+            catalogButton: 'View catalog',
+
+            professionalTitle: 'Professional',
+            approach: 'approach',
+
+            atmosphere: 'Atmosphere',
+
+            atmosphereText:
+                'We turn an ordinary space into a point of attraction where guests start communicating naturally, without a script.',
+
+            coordination: 'Coordination',
+
+            coordinationText:
+                'Our game masters do more than stand nearby — they engage guests, explain the mechanics and keep the energy going.',
+
+            quality: 'Quality',
+
+            qualityText:
+                'We use only natural materials: wood, metal and leather. Every game is an art object.',
+
+            catalog: 'Game',
+            games: 'catalog',
+
+            /* GAMES */
+
+            gameJenga: 'Jenga',
+            game4inrow: 'Four in a Row',
+            gameNasharu: 'Na Sharu',
+            gameVoshod: 'Sunrise',
+            gameMagnetic: 'Magnetic Field',
+            gameKalbutto: 'Kalbutto',
+            gameCornhole: 'Cornhole',
+            gameKoromyslo: 'Balance Beam',
+            gameZigzag: 'Zigzag',
+            gameSeaBattle: 'Sea Battle',
+            gameElastic: 'Elastic',
+            gameRails: 'Rails',
+            gameRingos: 'On the Hook',
+            gameTokatron: 'Tokatron',
+            gameBeerPong: 'Beer Pong',
+
+            /* PACKAGES */
+
+            formats: 'Participation',
+            participation: 'formats',
+
+            lightGames: '4 games to choose from',
+            oneGameMaster: '1 game master',
+
+            standardGames: '8 games to choose from',
+            twoGameMasters: '2 game masters',
+
+            maximumGames: '14 games in the zone',
+            fourGameMasters: '4 game masters',
+
+            customSet: 'Custom set',
+
+            twoHours: '2 hours',
+            fiveHours: '5 hours',
+
+            anyTime: 'Any time',
+            onRequest: 'On request',
+
+            packageNote:
+                'Every package includes delivery, setup, dismantling and professional coordinators. Delivery outside the city is calculated individually.',
+
+            ready: 'Ready to start?',
+
+            languageTitle: 'Choose your language',
+            languageSubtitle: 'Choose a language to view the website'
+        }
+    };
+
+
+    /* =====================================================
+       GET CURRENT LANGUAGE
+    ===================================================== */
+
+    function getCurrentLanguage() {
+        return localStorage.getItem(ELEMENT_LANGUAGE_KEY);
+    }
+
+
+    /* =====================================================
+       SET LANGUAGE
+    ===================================================== */
+
+    function setLanguage(language) {
+
+        if (!translations[language]) {
+            return;
         }
 
+        localStorage.setItem(
+            ELEMENT_LANGUAGE_KEY,
+            language
+        );
 
-        /* =====================================================
-           SET LANGUAGE
-        ===================================================== */
+        applyLanguage(language);
 
-        function setLanguage(language) {
+        const overlay =
+            document.getElementById('languageOverlay');
 
-            if (!translations[language]) {
-                return;
-            }
+        if (overlay) {
+            overlay.classList.add('hidden');
+        }
+    }
 
-            localStorage.setItem(
-                ELEMENT_LANGUAGE_KEY,
-                language
+
+    /* =====================================================
+       APPLY LANGUAGE
+    ===================================================== */
+
+    function applyLanguage(language) {
+
+        const dictionary =
+            translations[language] || translations.ru;
+
+
+        /* HTML LANGUAGE */
+
+        document.documentElement.lang =
+            language === 'kk'
+                ? 'kk'
+                : language;
+
+
+        /* NORMAL TEXT */
+
+        document.querySelectorAll('[data-i18n]')
+            .forEach(element => {
+
+                const key =
+                    element.dataset.i18n;
+
+                if (
+                    dictionary[key] !== undefined
+                ) {
+                    element.textContent =
+                        dictionary[key];
+                }
+            });
+
+
+        /* PAGE TITLE */
+
+        const title =
+            document.querySelector(
+                'title[data-i18n="pageTitle"]'
             );
 
-            applyLanguage(language);
-
-            const overlay =
-                document.getElementById('languageOverlay');
-
-            if (overlay) {
-                overlay.classList.add('hidden');
-            }
+        if (title) {
+            title.textContent =
+                dictionary.pageTitle;
         }
 
 
-        /* =====================================================
-           APPLY LANGUAGE
-        ===================================================== */
+        /* IMAGE ALT */
 
-        function applyLanguage(language) {
+        document.querySelectorAll('[data-i18n-alt]')
+            .forEach(element => {
 
-            const dictionary =
-                translations[language] || translations.ru;
+                const key =
+                    element.dataset.i18nAlt;
 
-
-            /* HTML LANGUAGE */
-
-            document.documentElement.lang =
-                language === 'kk'
-                    ? 'kk'
-                    : language;
-
-
-            /* NORMAL TEXT */
-
-            document.querySelectorAll('[data-i18n]')
-                .forEach(element => {
-
-                    const key =
-                        element.dataset.i18n;
-
-                    if (
-                        dictionary[key] !== undefined
-                    ) {
-                        element.textContent =
-                            dictionary[key];
-                    }
-                });
+                if (
+                    dictionary[key] !== undefined
+                ) {
+                    element.alt =
+                        dictionary[key];
+                }
+            });
 
 
-            /* PAGE TITLE */
+        /* LANGUAGE MODAL */
 
-            const title =
-                document.querySelector(
-                    'title[data-i18n="pageTitle"]'
-                );
+        const modalTitle =
+            document.getElementById(
+                'languageModalTitle'
+            );
 
-            if (title) {
-                title.textContent =
-                    dictionary.pageTitle;
-            }
-
-
-            /* IMAGE ALT */
-
-            document.querySelectorAll('[data-i18n-alt]')
-                .forEach(element => {
-
-                    const key =
-                        element.dataset.i18nAlt;
-
-                    if (
-                        dictionary[key] !== undefined
-                    ) {
-                        element.alt =
-                            dictionary[key];
-                    }
-                });
+        const modalSubtitle =
+            document.getElementById(
+                'languageModalSubtitle'
+            );
 
 
-            /* LANGUAGE MODAL */
-
-            const modalTitle =
-                document.getElementById(
-                    'languageModalTitle'
-                );
-
-            const modalSubtitle =
-                document.getElementById(
-                    'languageModalSubtitle'
-                );
+        if (modalTitle) {
+            modalTitle.textContent =
+                dictionary.languageTitle;
+        }
 
 
-            if (modalTitle) {
-                modalTitle.textContent =
-                    dictionary.languageTitle;
-            }
+        if (modalSubtitle) {
+            modalSubtitle.textContent =
+                dictionary.languageSubtitle;
+        }
 
 
-            if (modalSubtitle) {
-                modalSubtitle.textContent =
-                    dictionary.languageSubtitle;
-            }
+        /* LANGUAGE SWITCHER */
+
+        document.querySelectorAll(
+            '.lang-switch-btn'
+        ).forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.language === language
+            );
+
+        });
+    }
 
 
-            /* LANGUAGE SWITCHER */
+    /* =====================================================
+       INITIALIZATION
+    ===================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+
+            /* LANGUAGE BUTTONS */
 
             document.querySelectorAll(
-                '.lang-switch-btn'
+                '[data-language]'
             ).forEach(button => {
 
-                button.classList.toggle(
-                    'active',
-                    button.dataset.language === language
+                button.addEventListener(
+                    'click',
+                    function () {
+
+                        setLanguage(
+                            this.dataset.language
+                        );
+
+                    }
                 );
 
             });
-        }
 
 
-        /* =====================================================
-           INITIALIZATION
-        ===================================================== */
+            /* SAVED LANGUAGE */
 
-        document.addEventListener(
-            'DOMContentLoaded',
-            function () {
-
-                /* LANGUAGE BUTTONS */
-
-                document.querySelectorAll(
-                    '[data-language]'
-                ).forEach(button => {
-
-                    button.addEventListener(
-                        'click',
-                        function () {
-
-                            setLanguage(
-                                this.dataset.language
-                            );
-
-                        }
-                    );
-
-                });
+            const savedLanguage =
+                getCurrentLanguage();
 
 
-                /* SAVED LANGUAGE */
+            if (
+                savedLanguage &&
+                translations[savedLanguage]
+            ) {
 
-                const savedLanguage =
-                    getCurrentLanguage();
+                applyLanguage(
+                    savedLanguage
+                );
 
+                document
+                    .getElementById(
+                        'languageOverlay'
+                    )
+                    .classList
+                    .add('hidden');
 
-                if (
-                    savedLanguage &&
-                    translations[savedLanguage]
-                ) {
+            } else {
 
-                    applyLanguage(
-                        savedLanguage
-                    );
-
-                    document
-                        .getElementById(
-                            'languageOverlay'
-                        )
-                        .classList
-                        .add('hidden');
-
-                } else {
-
-                    document
-                        .getElementById(
-                            'languageOverlay'
-                        )
-                        .classList
-                        .remove('hidden');
-
-                }
+                document
+                    .getElementById(
+                        'languageOverlay'
+                    )
+                    .classList
+                    .remove('hidden');
 
             }
-        );
 
-    </script>
+        }
+    );
+
+</script>
 
 </body>
 
